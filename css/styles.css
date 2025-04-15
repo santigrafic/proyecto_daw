@@ -1,0 +1,224 @@
+body {
+    background-color: #FAF8ED;
+    font-family: roboto;
+    color: #5B5F62;
+}
+.container{
+    width: 1200px;
+    margin: 0 auto;
+}
+header {
+    width: 100%;
+    margin-bottom: 50px;
+    display: inline-block;
+}
+nav {
+    width: 60%;
+    padding-top: 20px;
+    box-sizing: border-box;
+    float: left;
+}
+#logo {
+    float: left;
+}
+nav ul {
+    list-style-type: none;
+    margin-top: 5px;
+}
+nav li {
+    float: left;
+    text-align: center;
+    margin-left: 40px;
+}
+nav a {
+    text-decoration: none;
+    color:#5B5F62;
+}
+nav a:hover {
+    color:#F66F4D;
+}
+#boton_book_now {
+    float: right;
+    border: 1px solid #F66F4D;
+    border-radius: 30px;
+    width: 150px;
+    height: 40px;
+    margin-top: 20px;
+    margin-right: 30px;
+    color:#F66F4D;
+    background-color: rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    padding-top: 9px;
+}
+#boton_book_now:hover {
+    color:#FAF8ED;
+    background-color: #F66F4D;
+}
+
+#hero {
+    width: 100%;
+    margin-bottom: 50px;
+}
+#texto_slide{
+    width: 60%;
+    float: left;
+    box-sizing: border-box;
+    padding-right: 180px;
+    box-sizing: border-box;
+}
+#texto_slide h1 {
+    margin-top: 110px;
+    margin-bottom: 30px;
+    color: #2D3134;
+    font-size: 84px;
+    font-family: sen;
+}
+#texto_slide p {
+    font-size: 18px;
+}
+#imagen_slide{
+    width: 40%;
+    float: left;
+}
+#icono_mapa {
+    position: absolute;
+    margin-top: 80px;
+    margin-left: 5px;
+}
+#img_slide {
+    width: 95%;
+    margin-left: 2.5%;
+}
+
+#destinations {
+    width: 100%;
+    margin-bottom: 50px;
+}
+#destinations h2 {
+    width: 30%;
+    color: #2D3134;
+    font-size: 58px;
+    font-weight: 500;
+}
+#noticias_home_primera {
+    width: 32%;
+    float: left;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid #FFFFFF;
+    border-radius: 20px;
+    padding: 10px 10px 10px 10px;
+    box-sizing: border-box;
+}
+#noticias_home {
+    width: 32%;
+    float: left;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid #FFFFFF;
+    border-radius: 20px;
+    padding: 10px 10px 10px 10px;
+    margin-left: 2%;
+    box-sizing: border-box;
+}
+#destinations img {
+    width: 100%;
+    border-radius: 20px;
+}
+#destinations h3 {
+    margin-left: 20px;
+}
+#destinations p {
+    margin-left: 20px;
+}
+#boton_book_noticias {
+    float: right;
+    border: 1px solid #2D3134;
+    border-radius: 30px;
+    padding: 10px 15px 10px 15px;
+    margin-bottom: 20px;
+    color:#2D3134;
+    background-color: rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+    text-decoration: none;
+}
+#boton_book_noticias:hover{
+    color:#FAF8ED;
+    background-color: #F66F4D;
+    border: 0px;
+}
+
+#newsletter {
+    text-align: center;
+    background-image: url(../img/bg-newsletter.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    border-radius: 30px;
+    padding: 40px 40px 80px 40px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+#newsletter h3 {
+    color: #2D3134;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+#newsletter p {
+    width: 35%;
+    margin: 0 auto;
+    color: #5B5F62;
+    margin-bottom: 20px;
+}
+#newsletter input {
+    width: 40%;
+    padding: 20px;
+    border: 0px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #5B5F62;
+}
+#newsletter input::placeholder {
+    color: #5B5F62;
+    opacity: 0.5;
+}
+
+footer {
+    width: 100%;
+    padding: 50px;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+    text-align: center;
+}
+#redes_sociales {
+    width: 150px;
+    margin: 0 auto;
+}
+#boton_social_footer {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #5B5F62;
+    border-radius: 21px;
+    background-color: rgba(255, 255, 255, 0);
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-top: 4px;
+    box-sizing: border-box;
+    display: block;
+    float: left;
+}
+#boton_social_footer:hover {
+    border: 2px solid #F66F4D;
+}
+#boton_social_footer img {
+    width: 28px;
+}
+.icono_social:hover {
+    filter: invert(56%) sepia(71%) saturate(3300%) hue-rotate(333deg) brightness(109%) contrast(93%);
+}
+#firma {
+    margin-top: 40px;
+    color: #F66F4D;
+    font-size: 14px;
+}
