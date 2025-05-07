@@ -222,3 +222,39 @@ footer {
     color: #F66F4D;
     font-size: 14px;
 }
+
+#destinos_form {
+    text-align: center;
+    background-image: url(../img/bg-newsletter.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    border-radius: 30px;
+    padding: 40px 40px 80px 40px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+#destinos_form h3 {
+    color: #2D3134;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+#destinos_form p {
+    width: 35%;
+    margin: 0 auto;
+    color: #5B5F62;
+    margin-bottom: 20px;
+}
+#destinos_form input {
+    width: 40%;
+    padding: 20px;
+    border: 0px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #5B5F62;
+}
+#destinos_form input::placeholder {
+    color: #5B5F62;
+    opacity: 0.5;
+}
