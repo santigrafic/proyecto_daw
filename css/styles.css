@@ -258,3 +258,23 @@ footer {
     color: #5B5F62;
     opacity: 0.5;
 }
+
+.boton {
+    float: right;
+    border: 1px solid #F66F4D;
+    border-radius: 30px;
+    width: 150px;
+    height: 40px;
+    margin-top: 20px;
+    margin-right: 30px;
+    color:#F66F4D;
+    background-color: rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    padding-top: 9px;
+}
+.boton:hover {
+    color:#FAF8ED;
+    background-color: #F66F4D;
+}

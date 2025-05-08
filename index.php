@@ -31,9 +31,8 @@
           <ul>
             <li><a href="">Home</a></li>
             <li><a href="">About us</a></li>
-            <li><a href="">Destinations</a></li>
+            <li><a href="destinations.php">Destinations</a></li>
             <li><a href="">Tours</a></li>
-            <li><a href="">Blog</a></li>
           </ul>
         </nav>
         <a href="" id="boton_book_now">Book Now</a>

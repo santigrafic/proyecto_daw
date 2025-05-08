@@ -7,7 +7,7 @@ CREATE TABLE pasaporte (
 
 -- Tabla USUARIOS
 CREATE TABLE usuarios (
-    id_usuario INT,
+    id_usuario SERIAL,
     nombre VARCHAR(50) NOT NULL,
     apellidos VARCHAR(50) NOT NULL,
     edad INT,
@@ -22,7 +22,7 @@ CREATE TABLE usuarios (
 
 -- Tabla DESTINO
 CREATE TABLE destino (
-    id_destino INT,
+    id_destino SERIAL,
     ciudad VARCHAR(50) NOT NULL,
     pais VARCHAR(50) NOT NULL,
     requiere_pasaporte BOOLEAN NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE destino (
 
 -- Tabla GUIAS
 CREATE TABLE guias (
-    id_guia INT,
+    id_guia SERIAL,
     nombre VARCHAR(50) NOT NULL,
     apellidos VARCHAR(50) NOT NULL,
     especialidad VARCHAR(20) NOT NULL,

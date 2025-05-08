@@ -31,18 +31,39 @@
           <ul>
             <li><a href="index.php">Home</a></li>
             <li><a href="">About us</a></li>
-            <li><a href="">Destinations</a></li>
+            <li><a href="destinations.php">Destinations</a></li>
             <li><a href="">Tours</a></li>
-            <li><a href="">Blog</a></li>
           </ul>
         </nav>
+        <a href="create_destinations.php" id="boton_book_now">Create Destination</a>
         <div style="clear: both"></div>
       </header>
-      
-      <section id="destinos_form">
+      <section id="destinations">
+        <h2>Find Popular Destination</h2>
+        <div id="noticias_home_primera">
+          <img src="img/noticia1.jpg" />
+          <h3>Mountain Hiking Tour</h3>
+          <p>Mountain Hiking Tour</p>
+          <a href="" id="boton_book_noticias">Book Now</a>
+        </div>
+        <div id="noticias_home">
+          <img src="img/noticia2.jpg" />
+          <h3>Machu Pichu, Perú</h3>
+          <p>Machu Pichu, Perú</p>
+          <a href="" id="boton_book_noticias">Book Now</a>
+        </div>
+        <div id="noticias_home">
+          <img src="img/noticia3.jpg" />
+          <h3>The Grand Canyon, Arizona</h3>
+          <p>The Grand Canyon, Arizona</p>
+          <a href="" id="boton_book_noticias">Book Now</a>
+        </div>
+        <div style="clear: both"></div>
+      </section>
+      <section id="newsletter">
         <form>
-          <h3>Crea un nuevo destino</h3>
-          <p>Introduce el nombre, la información y una foto del destino que quieras introducir.</p>
+          <h3>Sign up to our newsletter</h3>
+          <p>Recieve latest news, updates, and many other things every week.</p>
           <input type="email" placeholder="Enter Your email Adress" />
         </form>
         <div style="clear: both"></div>
