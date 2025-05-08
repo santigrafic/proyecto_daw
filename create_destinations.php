@@ -76,20 +76,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div style="clear: both"></div>
       </header>
       
-      <section id="newsletter">
+      <section id="destinos_form">
       <form method="POST" onsubmit="return validateForm()" novalidate>
           <h3>Crea un nuevo destino</h3>
           <p>Introduce la ciudad, el pais al que pertenece y si requiere pasaporte.</p>
           <input type="text" name="ciudad_destino" placeholder="Introduce aquí la ciudad de destino" required/>
-          <br><br><div id="ciudad_destinoError"></div><br><br>
+          <br><br><div id="ciudad_destinoError"></div><br>
           <input type="text" name="pais_destino" placeholder="Introduce aquí el pais del destino" required/>
-          <br><br><div id="pais_destinoError"></div><br><br>
+          <br><br><div id="pais_destinoError"></div><br>
           <p>¿Requiere pasaporte?</p>
-          <input type="radio" id="pasaporte_si" name="pasaporte" value="true">
-          <label for="pasaporte_si">SI</label><br>
-          <input type="radio" id="pasaporte_no" name="pasaporte" value="false">
-          <label for="pasaporte_no">NO</label><br><br>
-          <button class="boton" type="submit">Añadir destino</button>
+          <div class= "input_type_radio">
+            <input type="radio" id="pasaporte_si" name="pasaporte" value="true"><label for="pasaporte_si">SI</label><br>
+            <input type="radio" id="pasaporte_no" name="pasaporte" value="false"><label for="pasaporte_no">NO</label><br><br>
+          </div>
+          <button class="boton_formularios" type="submit">AÑADIR DESTINO</button>
         </form>
         <div style="clear: both"></div>
       </section>

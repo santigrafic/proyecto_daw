@@ -259,22 +259,35 @@ footer {
     opacity: 0.5;
 }
 
-.boton {
-    float: right;
+.boton_formularios {
     border: 1px solid #F66F4D;
     border-radius: 30px;
     width: 150px;
     height: 40px;
-    margin-top: 20px;
-    margin-right: 30px;
     color:#F66F4D;
     background-color: rgba(0, 0, 0, 0);
     box-sizing: border-box;
     text-align: center;
     text-decoration: none;
-    padding-top: 9px;
+    padding-top: 2px;
 }
-.boton:hover {
+.boton_formularios:hover {
     color:#FAF8ED;
     background-color: #F66F4D;
+}
+
+#ciudad_destinoError {
+    color: red;
+    font-weight: bold;
+}
+
+#pais_destinoError {
+    color: red;
+    font-weight: bold;
+}
+
+.input_type_radio {
+    width: 100px;
+    text-align: left;
+    margin: 0 auto;
 }
