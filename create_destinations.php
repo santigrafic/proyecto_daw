@@ -1,4 +1,4 @@
-<?php
+<?php/*
 session_start();
 
 include 'database.php';
@@ -35,13 +35,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           exit;
         }
     }
+*/
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Práctica final 1º DAW Semi lenguaje de marcas</title>
+    <title>Crear un Nuevo Destino</title>
     <meta name="description" content="Web de agencia de viajes" />
     <meta
       name="keywords"
@@ -67,10 +68,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <nav>
           <img id="logo" src="img/logo.png" title="Logo" alt="Logo de la web" />
           <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="">About us</a></li>
-            <li><a href="destinations.php">Destinations</a></li>
-            <li><a href="">Tours</a></li>
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="">Sobre nosotros</a></li>
+            <li><a href="destinations.php">Destinos</a></li>
+            <li><a href="">Excursiones</a></li>
           </ul>
         </nav>
         <div style="clear: both"></div>
@@ -96,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     <footer>
       <img src="img/logo.png" />
-      <p>Enjoy the touring</p>
+      <p>Drisfruta del viaje</p>
       <div id="redes_sociales">
         <a href="" target="_blank" id="boton_social_footer">
           <img src="img/facebook.svg" class="icono_social" />
@@ -109,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </a>
         <div style="clear: both"></div>
       </div>
-      <p id="firma">Creado por nadie · 2020</p>
+      <p id="firma">Creado por el equipo · 2025</p>
     </footer>
 
     <script>

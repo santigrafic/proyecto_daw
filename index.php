@@ -1,16 +1,15 @@
-<?php include 'database.php'; ?>
+<?php /*include 'database.php';*/ ?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>PrÃ¡ctica final 1Âº DAW Semi lenguaje de marcas</title>
+    <title>PrÃ¡ctica final 1Âº DAW Semi Proyecto Intermodular</title>
     <meta name="description" content="Web de agencia de viajes" />
     <meta
       name="keywords"
       content="travel, places, destinations, lovely, popular destinations, newsletter, daw"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="David Santiago Gavilan" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,21 +28,21 @@
         <nav>
           <img id="logo" src="img/logo.png" title="Logo" alt="Logo de la web" />
           <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">About us</a></li>
-            <li><a href="destinations.php">Destinations</a></li>
-            <li><a href="">Tours</a></li>
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="">Sobre nosotros</a></li>
+            <li><a href="destinations.php">Destinos</a></li>
+            <li><a href="">Excursiones</a></li>
+            <li><a href="">Blog</a></li>
           </ul>
         </nav>
-        <a href="" id="boton_book_now">Book Now</a>
+        <a href="" id="boton_book_now">Reserva Ahora</a>
         <div style="clear: both"></div>
       </header>
       <section id="hero">
         <div id="texto_slide">
-          <h1>Discover the Best Lovely Places</h1>
+          <h1>Descubre los Lugares más Encantadores</h1>
           <p>
-            Plan and book your perfect trip with expert advice, travel tips,
-            destination information and inspiration from us.
+          Planifica y reserva tu viaje perfecto con nuestros consejos expertos, recomendaciones, información sobre destinos e inspiración para viajar.
           </p>
         </div>
         <div id="imagen_slide">
@@ -63,39 +62,39 @@
         <div style="clear: both"></div>
       </section>
       <section id="destinations">
-        <h2>Find Popular Destination</h2>
-        <div id="noticias_home_primera">
+        <h2>Explora los Destinos Más Populares</h2>
+        <div class="noticias_home">
           <img src="img/noticia1.jpg" />
           <h3>Mountain Hiking Tour</h3>
           <p>Mountain Hiking Tour</p>
-          <a href="" id="boton_book_noticias">Book Now</a>
+          <a href="" id="boton_book_noticias">Reservar Ahora</a>
         </div>
-        <div id="noticias_home">
+        <div class="noticias_home">
           <img src="img/noticia2.jpg" />
           <h3>Machu Pichu, PerÃº</h3>
           <p>Machu Pichu, PerÃº</p>
-          <a href="" id="boton_book_noticias">Book Now</a>
+          <a href="" id="boton_book_noticias">Reservar Ahora</a>
         </div>
-        <div id="noticias_home">
+        <div class="noticias_home">
           <img src="img/noticia3.jpg" />
           <h3>The Grand Canyon, Arizona</h3>
           <p>The Grand Canyon, Arizona</p>
-          <a href="" id="boton_book_noticias">Book Now</a>
+          <a href="" id="boton_book_noticias">Reservar Ahora</a>
         </div>
         <div style="clear: both"></div>
       </section>
       <section id="newsletter">
         <form>
-          <h3>Sign up to our newsletter</h3>
-          <p>Recieve latest news, updates, and many other things every week.</p>
-          <input type="email" placeholder="Enter Your email Adress" />
+          <h3>Suscribete a nuestro boletín</h3>
+          <p>Recibe las últimas noticias, actualizaciones y muchas otras cosas cada semana.</p>
+          <input type="email" placeholder="Introduce tu dirección de correo electrónico" />
         </form>
         <div style="clear: both"></div>
       </section>
     </div>
     <footer>
       <img src="img/logo.png" />
-      <p>Enjoy the touring</p>
+      <p>Disfruta del viaje</p>
       <div id="redes_sociales">
         <a href="" target="_blank" id="boton_social_footer">
           <img src="img/facebook.svg" class="icono_social" />
@@ -108,7 +107,7 @@
         </a>
         <div style="clear: both"></div>
       </div>
-      <p id="firma">Creado por nadie Â· 2020</p>
+      <p id="firma">Creado por el equipo Â· 2025</p>
     </footer>
   </body>
 </html>
