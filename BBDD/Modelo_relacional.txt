@@ -1,0 +1,20 @@
+USUARIOS (id, nombre, apellidos, edad, email, num_pasaporte)
+PK (id)
+FK (num_pasaporte) -> PASAPORTE
+
+PASAPORTE (numero, pais_expedicion)
+PK (numero)
+
+DESTINO (id, ciudad, país, requierePasaporte)
+PK (id)
+
+GUIAS (id, nombre, apellidos, especialidad, id_destino)
+CP (id)
+FK (id_destino) -> DESTINO
+
+
+ELEGIR (id_usuario, id_destino)
+PK (id_usuario, id_destino)
+FK (id_usuario) -> USUARIOS
+FK (id_destino) -> DESTINO
+
