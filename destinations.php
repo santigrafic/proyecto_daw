@@ -34,9 +34,9 @@
                     <tr>
                         <th>ID</th>
                         <th>Ciudad</th>
-                        <th>País</th>
-                        <th>¿Requiere pasaporte?</th>
-                        <th>Más Información</th>
+                        <th>PaÃ­s</th>
+                        <th>Â¿Requiere pasaporte?</th>
+                        <th>MÃ¡s InformaciÃ³n</th>
                     </tr>
                 </thead>
                 <tbody>

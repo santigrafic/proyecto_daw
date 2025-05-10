@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ciudad, País</title>
+    <title>Ciudad, PaÃ­s</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,10 +29,10 @@
 
         <section id="destinations">
             <h1>Ciudad</h1>
-            <h2 class="destination">País</h2>
-            <p id="passport">¿Requiere Pasaporte? Sí/No</p>
+            <h2 class="destination">PaÃ­s</h2>
+            <p id="passport">Â¿Requiere Pasaporte? SÃ­/No</p>
 
-            <h3 class="destination">Guías Asignados</h2>
+            <h3 class="destination">GuÃ­as Asignados</h2>
             <table>
                 <thead>
                     <tr>
@@ -64,7 +64,7 @@
                         <th>Nombre</th>
                         <th>Apellidos</th>
                         <th>Edad</th>
-                        <th>Correo electrónico</th>
+                        <th>Correo electrÃ³nico</th>
                     </tr>
                 </thead>
                 <tbody>
