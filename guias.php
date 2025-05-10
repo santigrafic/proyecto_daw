@@ -1,24 +1,10 @@
-<?php
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-include'database.php';
-
-$id_destino = $_GET['id_destino'];
-$stmt = $pdo->prepare("SELECT * FROM destino WHERE id_destino = ?");
-$stmt->execute([$id_destino]);
-$destino = $stmt->fetch(PDO::FETCH_ASSOC);
-
-?>
-
+<?php include 'database.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Destino</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guias</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -38,68 +24,46 @@ $destino = $stmt->fetch(PDO::FETCH_ASSOC);
                     <li><a href="guias.php">Guias</a></li>
                 </ul>
             </nav>
+            <a href="create_guias.php" id="boton_book_now">Crear Nuevo</a>
             <div style="clear: both"></div>
         </header>
-
-        <section id="destinations">
-            <h1><?php echo htmlspecialchars($destino['ciudad']) ?></h1>
-            <h2 class="destination"><?php echo htmlspecialchars($destino['pais']) ?></h2>
-            <p id="passport">¿Requiere Pasaporte? <?php echo htmlspecialchars($destino['requiere_pasaporte'] ? 'Sí' : 'No'); ?></p>
-            <h3 class="destination">Guías Asignados</h3>
+        <section id="guias">
+            <h1>Listado de guias</h1>
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
+                    <th>ID</th>
                         <th>Nombre</th>
                         <th>Apellidos</th>
                         <th>Especialidad</th>
+                        <th>Ciudad asignada</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!--This section will be generated dynamically with PHP -->
                     <?php
-                        $stmt = $pdo->prepare("SELECT * FROM guias WHERE id_destino = ? ORDER BY id_guia ASC");
-                        $stmt->execute([$id_destino]);
+                        $stmt = $pdo->query("SELECT * FROM guias ORDER BY id_guia ASC");
                         while ($guias = $stmt->fetch(PDO::FETCH_ASSOC)):
+
+                            // Obtenemos la ciudad del guia
+                            $id_destino = $guias['id_destino'];
+                            $stmt_ciudad = $pdo->prepare("SELECT ciudad FROM destino WHERE id_destino = ?");
+                            $stmt_ciudad->execute([$id_destino]);
+                            $destino = $stmt_ciudad->fetch(PDO::FETCH_ASSOC);
+                            $ciudad = $destino ? $destino['ciudad'] : 'No asignado';
                     ?>
                     <tr>
                         <td><?= htmlspecialchars($guias['id_guia']) ?></td>
                         <td><?= htmlspecialchars($guias['nombre']) ?></td>
                         <td><?= htmlspecialchars($guias['apellidos']) ?></td>
                         <td><?= htmlspecialchars($guias['especialidad']); ?></td>
+                        <td><?= htmlspecialchars($ciudad); ?></td>
                     </tr>
                     <?php endwhile; ?>
                 </tbody>
             </table>
-
-            <h3 class="destination">Usuarios Registrados</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Edad</th>
-                        <th>Correo electrónico</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <!-- Example row -->
-                <tr>
-                    <td>num</td>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>15</td>
-                    <td>correo@correo.com</td>
-                </tr>
-                <!--<?php
-                /*php*/
-                ?>-->
-                </tbody>
-            </table>
         </section>
     </div>
-
     <footer>
         <img src="img/logo.png" />
         <p>Disfruta del viaje</p>
