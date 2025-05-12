@@ -1,6 +1,4 @@
-<?php
-/*php*/
-?>
+<?php include 'database.php'; ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -27,7 +25,7 @@
                     <li><a href="guias.php">Guías</a></li>
                 </ul>
             </nav>
-            <a href="crear_usuarios.php" id="boton_book_now">Crear Nuevo</a>
+            <a href="create_user.php" id="boton_book_now">Crear Nuevo</a>
             <div style="clear: both"></div>
         </header>
 
@@ -41,12 +39,33 @@
                         <th>Apellidos</th>
                         <th>Edad</th>
                         <th>Correo electrónico</th>
-                        <th>Tiene passaporte</th>
+                        <th>Pasaporte</th>
                         <th>Modificar usuario</th>
                         <th>Eliminar usuario</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <!--This section will be generated dynamically with PHP -->
+                    <?php
+                        $stmt = $pdo->query("SELECT * FROM usuarios ORDER BY id_usuario ASC");
+                        while ($usuarios = $stmt->fetch(PDO::FETCH_ASSOC)):
+                    ?>
+                    <tr>
+                        <td><?= htmlspecialchars($usuarios['id_usuario']) ?></td>
+                        <td><?= htmlspecialchars($usuarios['nombre']) ?></td>
+                        <td><?= htmlspecialchars($usuarios['apellidos']) ?></td>
+                        <td><?= htmlspecialchars($usuarios['edad']) ?></td>
+                        <td><?= htmlspecialchars($usuarios['email']) ?></td>
+                        <td><?= htmlspecialchars($usuarios['num_pasaporte']) ?></td>
+                        <td><a href="edit_user.php?id_usuario=<?= $usuarios['id_usuario'] ?>" class="boton_modificar">Modificar</a></td>
+                        <td>
+                            <form action="delete_user.php" method="POST" style="display:inline;">
+                                <input type="hidden" name="id_usuario" value="<?= $usuarios['id_usuario'] ?>">
+                                <button type="submit" class="boton_eliminar" onclick="return confirm('¿Seguro que deseas eliminar este usuario?')">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <?php endwhile; ?>
                 <!-- Example row -->
                 <tr>
                     <td>num</td>

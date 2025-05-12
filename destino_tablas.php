@@ -1,4 +1,4 @@
-<?php/*
+<?php
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -10,7 +10,7 @@ $id_destino = $_GET['id_destino'];
 $stmt = $pdo->prepare("SELECT * FROM destino WHERE id_destino = ?");
 $stmt->execute([$id_destino]);
 $destino = $stmt->fetch(PDO::FETCH_ASSOC);
-*/
+
 ?>
 
 <!DOCTYPE html>

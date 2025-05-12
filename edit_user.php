@@ -1,15 +1,22 @@
-<?php include 'database.php'; ?>
+<?php
+session_start();
+
+include 'database.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Agencia de Viajes - royecto intermodular final 1 DAW Semi</title>
+    <title>Crear un Nuevo Destino</title>
     <meta name="description" content="Web de agencia de viajes" />
     <meta
       name="keywords"
       content="travel, places, destinations, lovely, popular destinations, newsletter, daw"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="David Santiago Gavilan" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,66 +42,20 @@
             <li><a href="guias.php">Guías</a></li>
           </ul>
         </nav>
-        <a href="destinations.php" id="boton_book_now">Reserva Ahora</a>
         <div style="clear: both"></div>
       </header>
-      <section id="hero">
-        <div id="texto_slide">
-          <h1>Descubre los Lugares más Encantadores</h1>
-          <p>
-          Planifica y reserva tu viaje perfecto con nuestros consejos expertos, recomendaciones, información sobre destinos e inspiración para viajar.
-          </p>
-        </div>
-        <div id="imagen_slide">
-          <img
-            id="icono_mapa"
-            src="img/mapa.png"
-            title="icono_mapa"
-            alt="icono de un mapa"
-          />
-          <img
-            id="img_slide"
-            src="img/section1.png"
-            title="Chico_agencia"
-            alt="imagen del chico de la agencia"
-          />
-        </div>
-        <div style="clear: both"></div>
-      </section>
-      <section id="destinations">
-        <h2>Explora los Destinos Más Populares</h2>
-        <div class="noticias_home">
-          <img src="img/noticia1.jpg" />
-          <h3>Oporto, Portugal</h3>
-          <p>Oporto, Portugal</p>
-          <a href="destinations.php" id="boton_book_noticias">Reservar Ahora</a>
-        </div>
-        <div class="noticias_home">
-          <img src="img/noticia2.jpg" />
-          <h3>Machu Pichu, Perú</h3>
-          <p>Machu Pichu, Perú</p>
-          <a href="destinations.php" id="boton_book_noticias">Reservar Ahora</a>
-        </div>
-        <div class="noticias_home">
-          <img src="img/noticia3.jpg" />
-          <h3>El Gran Cañón, Arizona</h3>
-          <p>El Gran Cañón, Arizona</p>
-          <a href="destinations.php" id="boton_book_noticias">Reservar Ahora</a>
-        </div>
-        <div style="clear: both"></div>
-      </section>
-      <section id="newsletter">
-        <form>
-          <h3>Suscribete a nuestro boletín</h3>
-          <p>Recibe las últimas noticias, actualizaciones y muchas otras cosas cada semana.</p>
-          <input type="email" placeholder="Introduce tu dirección de correo electrónico" />
+      
+      <section id="destinos_form">
+      <form method="POST" onsubmit="return validateForm()" novalidate>
+          <h3>Modifica tu usuario</h3>
+          <button class="boton_formularios" type="submit">MODIFICAR USUARIO</button>
         </form>
         <div style="clear: both"></div>
       </section>
     </div>
     <footer>
       <img src="img/logo.png" />
-      <p>Disfruta del viaje</p>
+      <p>Drisfruta del viaje</p>
       <div id="redes_sociales">
         <a href="" target="_blank" id="boton_social_footer">
           <img src="img/facebook.svg" class="icono_social" />
@@ -109,5 +70,10 @@
       </div>
       <p id="firma">Creado por el equipo · 2025</p>
     </footer>
+
+    <script>
+
+    </script>
+
   </body>
 </html>
