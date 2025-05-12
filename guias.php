@@ -1,4 +1,4 @@
-<?php include 'database.php'; ?>
+<?php /*include 'database.php';*/ ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -20,15 +20,15 @@
                     <li><a href="index.php">Inicio</a></li>
                     <li><a href="">Sobre nosotros</a></li>
                     <li><a href="destinations.php">Destinos</a></li>
-                    <li><a href="users.php">Usuarios</a></li>
-                    <li><a href="guias.php">Guias</a></li>
+                    <li><a href="usuarios.php">Usuarios</a></li>
+                    <li><a href="guias.php">Guías</a></li>
                 </ul>
             </nav>
             <a href="create_guias.php" id="boton_book_now">Crear Nuevo</a>
             <div style="clear: both"></div>
         </header>
         <section id="guias">
-            <h1>Listado de guias</h1>
+            <h1>Listado de Guías</h1>
             <table>
                 <thead>
                     <tr>

@@ -21,10 +21,13 @@
                 <img id="logo" src="img/logo.png" title="Logo" alt="Website logo" />
                 <ul>
                     <li><a href="index.php">Inicio</a></li>
+                    <li><a href="">Sobre nosotros</a></li>
                     <li><a href="destinations.php">Destinos</a></li>
                     <li><a href="usuarios.php">Usuarios</a></li>
+                    <li><a href="guias.php">Guías</a></li>
                 </ul>
             </nav>
+            <a href="crear_usuarios.php" id="boton_book_now">Crear Nuevo</a>
             <div style="clear: both"></div>
         </header>
 

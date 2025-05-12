@@ -1,4 +1,4 @@
-<?php
+<?php/*
 session_start();
 
 include 'database.php';
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           exit;
         }
     }
-
+*/
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <li><a href="">Sobre nosotros</a></li>
             <li><a href="destinations.php">Destinos</a></li>
             <li><a href="usuarios.php">Usuarios</a></li>
-            <li><a href="guias.php">Guias</a></li>
+            <li><a href="guias.php">Guías</a></li>
           </ul>
         </nav>
         <div style="clear: both"></div>

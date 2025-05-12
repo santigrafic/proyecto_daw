@@ -135,10 +135,15 @@ nav a:hover {
     box-sizing: border-box;
     text-decoration: none;
 }
-#boton_book_noticias:hover{
+#boton_book_noticias:hover {
     color:#FAF8ED;
     background-color: #F66F4D;
-    border: 0px;
+    border-color: #F66F4D;
+}
+#boton_book_noticias:active {
+    color:#2D3134;
+    background-color: #FAF8ED;
+    border-color: #2D3134;
 }
 #newsletter {
     text-align: center;
