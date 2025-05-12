@@ -1,9 +1,9 @@
-<?php /*include 'database.php';*/ ?>
+<?php include 'database.php';?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Práctica final 1º DAW Semi Proyecto Intermodular</title>
+    <title>Agencia de Viajes - royecto intermodular final 1 DAW Semi</title>
     <meta name="description" content="Web de agencia de viajes" />
     <meta
       name="keywords"
@@ -32,7 +32,7 @@
             <li><a href="">Sobre nosotros</a></li>
             <li><a href="destinations.php">Destinos</a></li>
             <li><a href="usuarios.php">Usuarios</a></li>
-            <li><a href="">Blog</a></li>
+            <li><a href="guias.php">Guias</a></li>
           </ul>
         </nav>
         <a href="" id="boton_book_now">Reserva Ahora</a>

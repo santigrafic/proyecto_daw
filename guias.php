@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Destinos</title>
+    <title>Guias</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,37 +20,44 @@
                     <li><a href="index.php">Inicio</a></li>
                     <li><a href="">Sobre nosotros</a></li>
                     <li><a href="destinations.php">Destinos</a></li>
-                    <li><a href="usuarios.php">Usuarios</a></li>
+                    <li><a href="users.php">Usuarios</a></li>
                     <li><a href="guias.php">Guias</a></li>
                 </ul>
             </nav>
-            <a href="create_destinations.php" id="boton_book_now">Crear Nuevo</a>
+            <a href="create_guias.php" id="boton_book_now">Crear Nuevo</a>
             <div style="clear: both"></div>
         </header>
-        <section id="destinations">
-            <h1>Destinos Disponibles</h1>
+        <section id="guias">
+            <h1>Listado de guias</h1>
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Ciudad</th>
-                        <th>País</th>
-                        <th>¿Requiere pasaporte?</th>
-                        <th>Más Información</th>
+                    <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Especialidad</th>
+                        <th>Ciudad asignada</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!--This section will be generated dynamically with PHP -->
                     <?php
-                        $stmt = $pdo->query("SELECT * FROM destino ORDER BY id_destino ASC");
-                        while ($destino = $stmt->fetch(PDO::FETCH_ASSOC)):
+                        $stmt = $pdo->query("SELECT * FROM guias ORDER BY id_guia ASC");
+                        while ($guias = $stmt->fetch(PDO::FETCH_ASSOC)):
+
+                            // Obtenemos la ciudad del guia
+                            $id_destino = $guias['id_destino'];
+                            $stmt_ciudad = $pdo->prepare("SELECT ciudad FROM destino WHERE id_destino = ?");
+                            $stmt_ciudad->execute([$id_destino]);
+                            $destino = $stmt_ciudad->fetch(PDO::FETCH_ASSOC);
+                            $ciudad = $destino ? $destino['ciudad'] : 'No asignado';
                     ?>
                     <tr>
-                        <td><?= htmlspecialchars($destino['id_destino']) ?></td>
-                        <td><?= htmlspecialchars($destino['ciudad']) ?></td>
-                        <td><?= htmlspecialchars($destino['pais']) ?></td>
-                        <td><?= htmlspecialchars($destino['requiere_pasaporte'] ? 'Sí' : 'No'); ?></td>
-                        <td><a href="destino_tablas.php?id_destino=<?= $destino['id_destino'] ?>" class="boton_view_details">Ver Detalles</a></td>
+                        <td><?= htmlspecialchars($guias['id_guia']) ?></td>
+                        <td><?= htmlspecialchars($guias['nombre']) ?></td>
+                        <td><?= htmlspecialchars($guias['apellidos']) ?></td>
+                        <td><?= htmlspecialchars($guias['especialidad']); ?></td>
+                        <td><?= htmlspecialchars($ciudad); ?></td>
                     </tr>
                     <?php endwhile; ?>
                 </tbody>

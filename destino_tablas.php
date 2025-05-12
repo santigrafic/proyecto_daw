@@ -1,5 +1,16 @@
 <?php
-/*php*/
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+include'database.php';
+
+$id_destino = $_GET['id_destino'];
+$stmt = $pdo->prepare("SELECT * FROM destino WHERE id_destino = ?");
+$stmt->execute([$id_destino]);
+$destino = $stmt->fetch(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -21,19 +32,20 @@
                 <img id="logo" src="img/logo.png" title="Logo" alt="Website logo" />
                 <ul>
                     <li><a href="index.php">Inicio</a></li>
+                    <li><a href="">Sobre nosotros</a></li>
                     <li><a href="destinations.php">Destinos</a></li>
                     <li><a href="usuarios.php">Usuarios</a></li>
+                    <li><a href="guias.php">Guias</a></li>
                 </ul>
             </nav>
             <div style="clear: both"></div>
         </header>
 
         <section id="destinations">
-            <h1>Ciudad</h1>
-            <h2 class="destination">País</h2>
-            <p id="passport">¿Requiere Pasaporte? Sí/No</p>
-
-            <h3 class="destination">Guías Asignados</h2>
+            <h1><?php echo htmlspecialchars($destino['ciudad']) ?></h1>
+            <h2 class="destination"><?php echo htmlspecialchars($destino['pais']) ?></h2>
+            <p id="passport">¿Requiere Pasaporte? <?php echo htmlspecialchars($destino['requiere_pasaporte'] ? 'Sí' : 'No'); ?></p>
+            <h3 class="destination">Guías Asignados</h3>
             <table>
                 <thead>
                     <tr>
@@ -44,16 +56,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                <!-- Example row -->
-                <tr>
-                    <td>Num</td>
-                    <td>Maria</td>
-                    <td>López</td>
-                    <td>especialidad</td>
-                </tr>
-                <!--<?php
-                /*php*/
-                ?>-->
+                    <!--This section will be generated dynamically with PHP -->
+                    <?php
+                        $stmt = $pdo->prepare("SELECT * FROM guias WHERE id_destino = ? ORDER BY id_guia ASC");
+                        $stmt->execute([$id_destino]);
+                        while ($guias = $stmt->fetch(PDO::FETCH_ASSOC)):
+                    ?>
+                    <tr>
+                        <td><?= htmlspecialchars($guias['id_guia']) ?></td>
+                        <td><?= htmlspecialchars($guias['nombre']) ?></td>
+                        <td><?= htmlspecialchars($guias['apellidos']) ?></td>
+                        <td><?= htmlspecialchars($guias['especialidad']); ?></td>
+                    </tr>
+                    <?php endwhile; ?>
                 </tbody>
             </table>
 
