@@ -23,8 +23,8 @@
                     <li><a href="usuarios.php">Usuarios</a></li>
                     <li><a href="guias.php">Guías</a></li>
                 </ul>
-            </nav>
-            <a href="create_guias.php" id="boton_book_now">Crear Nuevo</a>
+            </nav> 
+            <a href="create_guides.php" id="boton_book_now">Crear Nuevo</a>
             <div style="clear: both"></div>
         </header>
         <section id="guias">
