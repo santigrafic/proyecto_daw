@@ -1,9 +1,9 @@
-<?php /*include 'database.php';*/ ?>
+<?php /*include 'database.php';*/?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Práctica final 1º DAW Semi Proyecto Intermodular</title>
+    <title>Agencia de Viajes - royecto intermodular final 1 DAW Semi</title>
     <meta name="description" content="Web de agencia de viajes" />
     <meta
       name="keywords"
@@ -31,18 +31,18 @@
             <li><a href="index.php">Inicio</a></li>
             <li><a href="">Sobre nosotros</a></li>
             <li><a href="destinations.php">Destinos</a></li>
-            <li><a href="">Excursiones</a></li>
-            <li><a href="">Blog</a></li>
+            <li><a href="usuarios.php">Usuarios</a></li>
+            <li><a href="guias.php">Guías</a></li>
           </ul>
         </nav>
-        <a href="" id="boton_book_now">Reserva Ahora</a>
+        <a href="destinations.php" id="boton_book_now">Reserva Ahora</a>
         <div style="clear: both"></div>
       </header>
       <section id="hero">
         <div id="texto_slide">
-          <h1>Descubre los Lugares m�s Encantadores</h1>
+          <h1>Descubre los Lugares más Encantadores</h1>
           <p>
-          Planifica y reserva tu viaje perfecto con nuestros consejos expertos, recomendaciones, informaci�n sobre destinos e inspiraci�n para viajar.
+          Planifica y reserva tu viaje perfecto con nuestros consejos expertos, recomendaciones, información sobre destinos e inspiración para viajar.
           </p>
         </div>
         <div id="imagen_slide">
@@ -62,32 +62,32 @@
         <div style="clear: both"></div>
       </section>
       <section id="destinations">
-        <h2>Explora los Destinos M�s Populares</h2>
+        <h2>Explora los Destinos Más Populares</h2>
         <div class="noticias_home">
           <img src="img/noticia1.jpg" />
-          <h3>Mountain Hiking Tour</h3>
-          <p>Mountain Hiking Tour</p>
-          <a href="" id="boton_book_noticias">Reservar Ahora</a>
+          <h3>Oporto, Portugal</h3>
+          <p>Oporto, Portugal</p>
+          <a href="destinations.php" id="boton_book_noticias">Reservar Ahora</a>
         </div>
         <div class="noticias_home">
           <img src="img/noticia2.jpg" />
           <h3>Machu Pichu, Perú</h3>
           <p>Machu Pichu, Perú</p>
-          <a href="" id="boton_book_noticias">Reservar Ahora</a>
+          <a href="destinations.php" id="boton_book_noticias">Reservar Ahora</a>
         </div>
         <div class="noticias_home">
           <img src="img/noticia3.jpg" />
-          <h3>The Grand Canyon, Arizona</h3>
-          <p>The Grand Canyon, Arizona</p>
-          <a href="" id="boton_book_noticias">Reservar Ahora</a>
+          <h3>El Gran Cañón, Arizona</h3>
+          <p>El Gran Cañón, Arizona</p>
+          <a href="destinations.php" id="boton_book_noticias">Reservar Ahora</a>
         </div>
         <div style="clear: both"></div>
       </section>
       <section id="newsletter">
         <form>
-          <h3>Suscribete a nuestro bolet�n</h3>
-          <p>Recibe las �ltimas noticias, actualizaciones y muchas otras cosas cada semana.</p>
-          <input type="email" placeholder="Introduce tu direcci�n de correo electr�nico" />
+          <h3>Suscribete a nuestro boletín</h3>
+          <p>Recibe las últimas noticias, actualizaciones y muchas otras cosas cada semana.</p>
+          <input type="email" placeholder="Introduce tu dirección de correo electrónico" />
         </form>
         <div style="clear: both"></div>
       </section>

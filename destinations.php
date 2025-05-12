@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Destinations</title>
+    <title>Destinos</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,8 +20,8 @@
                     <li><a href="index.php">Inicio</a></li>
                     <li><a href="">Sobre nosotros</a></li>
                     <li><a href="destinations.php">Destinos</a></li>
-                    <li><a href="">Excursiones</a></li>
-                    <li><a href="">Blog</a></li>
+                    <li><a href="usuarios.php">Usuarios</a></li>
+                    <li><a href="guias.php">GuÃ­as</a></li>
                 </ul>
             </nav>
             <a href="create_destinations.php" id="boton_book_now">Crear Nuevo</a>
@@ -34,37 +34,25 @@
                     <tr>
                         <th>ID</th>
                         <th>Ciudad</th>
-                        <th>País</th>
-                        <th>¿Requiere pasaporte?</th>
-                        <th>Más Información</th>
+                        <th>PaÃ­s</th>
+                        <th>Â¿Requiere pasaporte?</th>
+                        <th>MÃ¡s InformaciÃ³n</th>
                     </tr>
                 </thead>
                 <tbody>
-                <!--This section will be generated dynamically with PHP -->
-                <?php 
-                /*php*/ ?>
-                <!-- Ejemplos para ver los estilos -->
-                <tr>
-                    <td>num</td>
-                    <td>Tokyo</td>
-                    <td>Japan</td>
-                    <td>Yes</td>
-                    <td><a href="destino_tablas.php?id=1" class="boton_view_details">Ver Detalles</a></td>
-                </tr>
-                <tr>
-                    <td>num</td>
-                    <td>Madrid</td>
-                    <td>Spain</td>
-                    <td>No</td>
-                    <td><a href="" class="boton_view_details">Ver Detalles</a></td>
-                </tr>
-                <tr>
-                    <td>num</td>
-                    <td>Oklahoma</td>
-                    <td>EEUU</td>
-                    <td>Yes</td>
-                    <td><a href="" class="boton_view_details">Ver Detalles</a></td>
-                </tr>
+                    <!--This section will be generated dynamically with PHP -->
+                    <?php
+                        $stmt = $pdo->query("SELECT * FROM destino ORDER BY id_destino ASC");
+                        while ($destino = $stmt->fetch(PDO::FETCH_ASSOC)):
+                    ?>
+                    <tr>
+                        <td><?= htmlspecialchars($destino['id_destino']) ?></td>
+                        <td><?= htmlspecialchars($destino['ciudad']) ?></td>
+                        <td><?= htmlspecialchars($destino['pais']) ?></td>
+                        <td><?= htmlspecialchars($destino['requiere_pasaporte'] ? 'SÃ­' : 'No'); ?></td>
+                        <td><a href="destino_tablas.php?id_destino=<?= $destino['id_destino'] ?>" class="boton_view_details">Ver Detalles</a></td>
+                    </tr>
+                    <?php endwhile; ?>
                 </tbody>
             </table>
         </section>

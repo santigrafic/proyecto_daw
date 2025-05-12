@@ -1,16 +1,5 @@
-<?php/*
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-include'database.php';
-
-$id_destino = $_GET['id_destino'];
-$stmt = $pdo->prepare("SELECT * FROM destino WHERE id_destino = ?");
-$stmt->execute([$id_destino]);
-$destino = $stmt->fetch(PDO::FETCH_ASSOC);
-*/
+<?php
+/*php*/
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +7,7 @@ $destino = $stmt->fetch(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ciudad, País</title>
+    <title>Usuarios</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -38,41 +27,12 @@ $destino = $stmt->fetch(PDO::FETCH_ASSOC);
                     <li><a href="guias.php">Guías</a></li>
                 </ul>
             </nav>
+            <a href="crear_usuarios.php" id="boton_book_now">Crear Nuevo</a>
             <div style="clear: both"></div>
         </header>
 
-        <section id="destinations">
-            <h1><?php echo htmlspecialchars($destino['ciudad']) ?></h1>
-            <h2 class="destination"><?php echo htmlspecialchars($destino['pais']) ?></h2>
-            <p id="passport">¿Requiere Pasaporte? <?php echo htmlspecialchars($destino['requiere_pasaporte'] ? 'Sí' : 'No'); ?></p>
-            <h3 class="destination">Guías Asignados</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Especialidad</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!--This section will be generated dynamically with PHP -->
-                    <?php
-                        $stmt = $pdo->prepare("SELECT * FROM guias WHERE id_destino = ? ORDER BY id_guia ASC");
-                        $stmt->execute([$id_destino]);
-                        while ($guias = $stmt->fetch(PDO::FETCH_ASSOC)):
-                    ?>
-                    <tr>
-                        <td><?= htmlspecialchars($guias['id_guia']) ?></td>
-                        <td><?= htmlspecialchars($guias['nombre']) ?></td>
-                        <td><?= htmlspecialchars($guias['apellidos']) ?></td>
-                        <td><?= htmlspecialchars($guias['especialidad']); ?></td>
-                    </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
-
-            <h3 class="destination">Usuarios Registrados</h2>
+        <section id="usuarios">
+            <h1>Listado de Usuarios Registrados</h1>
             <table>
                 <thead>
                     <tr>
@@ -81,16 +41,32 @@ $destino = $stmt->fetch(PDO::FETCH_ASSOC);
                         <th>Apellidos</th>
                         <th>Edad</th>
                         <th>Correo electrónico</th>
+                        <th>Tiene passaporte</th>
+                        <th>Modificar usuario</th>
+                        <th>Eliminar usuario</th>
                     </tr>
                 </thead>
                 <tbody>
                 <!-- Example row -->
                 <tr>
                     <td>num</td>
-                    <td>John</td>
-                    <td>Doe</td>
+                    <td>Miguel Angelesdecielocaido</td>
+                    <td>Creo</td>
                     <td>15</td>
                     <td>correo@correo.com</td>
+                    <td>No</td>
+                    <td><a href="" class="boton_modificar">Modificar</a></td>
+                    <td><a href="" class="boton_eliminar">Eliminar</a></td>
+                </tr>
+                   <tr>
+                    <td>num</td>
+                    <td>Parti</td>
+                    <td>Do</td>
+                    <td>45</td>
+                    <td>imaginatequeesun@correolarguisimo.com</td>
+                    <td>Sí</td>
+                    <td><a href="" class="boton_modificar">Modificar</a></td>
+                    <td><a href="" class="boton_eliminar">Eliminar</a></td>
                 </tr>
                 <!--<?php
                 /*php*/
