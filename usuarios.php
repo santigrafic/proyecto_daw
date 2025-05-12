@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ciudad, País</title>
+    <title>Usuarios</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,36 +28,8 @@
             <div style="clear: both"></div>
         </header>
 
-        <section id="destinations">
-            <h1>Ciudad</h1>
-            <h2 class="destination">País</h2>
-            <p id="passport">¿Requiere Pasaporte? Sí/No</p>
-
-            <h3 class="destination">Guías Asignados</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Especialidad</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <!-- Example row -->
-                <tr>
-                    <td>Num</td>
-                    <td>Maria</td>
-                    <td>López</td>
-                    <td>especialidad</td>
-                </tr>
-                <!--<?php
-                /*php*/
-                ?>-->
-                </tbody>
-            </table>
-
-            <h3 class="destination">Usuarios Registrados</h2>
+        <section id="usuarios">
+            <h1>Listado de Usuarios Registrados</h1>
             <table>
                 <thead>
                     <tr>
@@ -66,16 +38,32 @@
                         <th>Apellidos</th>
                         <th>Edad</th>
                         <th>Correo electrónico</th>
+                        <th>Tiene passaporte</th>
+                        <th>Modificar usuario</th>
+                        <th>Eliminar usuario</th>
                     </tr>
                 </thead>
                 <tbody>
                 <!-- Example row -->
                 <tr>
                     <td>num</td>
-                    <td>John</td>
-                    <td>Doe</td>
+                    <td>Miguel Angelesdecielocaido</td>
+                    <td>Creo</td>
                     <td>15</td>
                     <td>correo@correo.com</td>
+                    <td>No</td>
+                    <td><a href="" class="boton_modificar">Modificar</a></td>
+                    <td><a href="" class="boton_eliminar">Eliminar</a></td>
+                </tr>
+                   <tr>
+                    <td>num</td>
+                    <td>Parti</td>
+                    <td>Do</td>
+                    <td>45</td>
+                    <td>imaginatequeesun@correolarguisimo.com</td>
+                    <td>Sí</td>
+                    <td><a href="" class="boton_modificar">Modificar</a></td>
+                    <td><a href="" class="boton_eliminar">Eliminar</a></td>
                 </tr>
                 <!--<?php
                 /*php*/

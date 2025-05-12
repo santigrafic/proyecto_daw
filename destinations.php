@@ -20,7 +20,7 @@
                     <li><a href="index.php">Inicio</a></li>
                     <li><a href="">Sobre nosotros</a></li>
                     <li><a href="destinations.php">Destinos</a></li>
-                    <li><a href="">Excursiones</a></li>
+                    <li><a href="usuarios.php">Usuarios</a></li>
                     <li><a href="">Blog</a></li>
                 </ul>
             </nav>

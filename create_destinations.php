@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <li><a href="index.php">Inicio</a></li>
             <li><a href="">Sobre nosotros</a></li>
             <li><a href="destinations.php">Destinos</a></li>
-            <li><a href="">Excursiones</a></li>
+            <li><a href="usuarios.php">Usuarios</a></li>
           </ul>
         </nav>
         <div style="clear: both"></div>

@@ -326,13 +326,12 @@ tr:hover .boton_view_details {
     color:#FAF8ED;
     background-color: #F66F4D;
 }
-tr .boton_view_details:active{
+tr .boton_view_details:active {
     color: #F66F4D;
     background-color: #FAF8ED;
     border-color:#FAF8ED;
 }
-
-#destinations h2.destination{
+#destinations h2.destination {
     width: auto;
     font-size: 3.5rem;
     font-family: "sen", sans-serif;
@@ -340,8 +339,77 @@ tr .boton_view_details:active{
     text-align: center;
     margin-top: -40px;
 }
-#destinations h3.destination{
+#destinations h3.destination {
     font-size: 2.5rem;
 }
-#passport{
-    font-size: 1.25rem;}
+#passport {
+    font-size: 1.25rem;
+}
+/*Listado de usuarios*/
+#usuarios h1 {
+    font-size: 4.5rem;
+    font-family: "sen", sans-serif;
+    color: #2D3134;
+    text-align: center;
+    margin-top: 0;
+}
+#usuarios table {
+    width: 100%;
+    margin-bottom: 50px;
+    text-align: center;
+    color: #5B5F62;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    border-collapse: collapse;
+    overflow: hidden;
+    table-layout: fixed;
+}
+#usuarios th {
+    background-color: #F66F4D;
+    color: #FFFFFF;
+    padding: 20px;
+    border: 1px solid #FFFFFF;
+    border-left: none;
+}
+#usuarios tr {
+    border: solid 1px transparent;
+    border-bottom: 1px solid #a1a5aa;
+}
+#usuarios tr:hover {
+    background-color: #5B5F62;
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+}
+#usuarios td {
+    padding: 20px;
+}
+td {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+.boton_eliminar, .boton_modificar {
+    padding: 10px 19px;
+    color: #F66F4D;
+    border: 1px solid #F66F4D;
+    border-radius: 25px;
+    text-decoration: none;
+}
+tr:hover .boton_modificar{
+    color:#FAF8ED;
+    background-color: #F66F4D;
+}
+tr:hover .boton_eliminar {
+    color:#FAF8ED;
+    background-color: #F66F4D;
+}
+tr .boton_modificar:active {
+    color: #F66F4D;
+    background-color: #FAF8ED;
+    border-color:#FAF8ED;
+}
+tr .boton_eliminar:active {
+    color: #F66F4D;
+    background-color: #FAF8ED;
+    border-color:#FAF8ED;
+}
