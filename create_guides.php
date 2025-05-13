@@ -47,7 +47,14 @@
           <br><br><div id="nombre_guiaError"></div><br>
           <input type="text" name="apellido_guia" placeholder="Introduce aquí el apellido del guía" required/>
           <br><br><div id="apellido_guiaError"></div><br>
-          <input type="text" name="especialidad_guia" placeholder="Introduce aquí la especialidad del guía" required/>
+          <label for="especialidad">Especialidad</label>
+            <select name="especialidad_guia" id="especialidad">
+              <option value="geografía">Geografía</option>
+              <option value="historia">Historia</option>
+              <option value="gastronomia">Gastronomía</option>
+              <option value="entretenimiento">Entretenimiento</option>
+              <option value="musica">Música</option>
+            </select>
           <br><br><div id="especialidad_guiaError"></div><br>
           <input type="text" name="pais_asignado" placeholder="Introduce aquí el país asignado del guía" required/>
           <br><br><div id="paisAsignado_guiaError"></div><br>
@@ -82,7 +89,7 @@ function validateForm() {
   const apellido_guiaError = document.getElementById('apellido_guiaError');
   const especialidad_guiaInput = document.querySelector('input[name="especialidad_guia"]');
   const especialidad_guiaError = document.getElementById('especialidad_guiaError');
-  const pais_asignadoInput = document.querySelector('input[name="pais_asignado"]');
+  const paisAsignado_guiaInput = document.querySelector('input[name="pais_asignado"]');
   const paisAsignado_guiaError = document.getElementById('paisAsignado_guiaError');
 
   let isValid = true;
@@ -115,10 +122,10 @@ function validateForm() {
   }
 
   paisAsignado_guiaError.textContent = '';
-  if (pais_asignadoInput.value.trim() === '') {
+  if (paisAsignado_guiaInput.value.trim() === '') {
     paisAsignado_guiaError.textContent = 'El guía debe tener un país asociado.';
     isValid = false;
-  } else if (pais_asignadoInput.value.trim().length < 3) {
+  } else if (paisAsignado_guiaInput.value.trim().length < 3) {
     paisAsignado_guiaError.textContent = 'El país asociado al guía debe tener al menos 3 caracteres.';
     isValid = false;
   }
