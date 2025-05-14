@@ -47,7 +47,10 @@
                 <tbody>
                     <!--This section will be generated dynamically with PHP -->
                     <?php
-                        $stmt = $pdo->query("SELECT * FROM usuarios ORDER BY id_usuario ASC");
+                        $stmt = $pdo->query("SELECT u.id_usuario, u.nombre, u.apellidos, u.edad, u.email, p.numero AS num_pasaporte
+                                            FROM usuarios u
+                                            LEFT JOIN pasaporte p ON u.id_usuario = p.id_usuario
+                                            ORDER BY u.id_usuario ASC");
                         while ($usuarios = $stmt->fetch(PDO::FETCH_ASSOC)):
                     ?>
                     <tr>
@@ -56,7 +59,7 @@
                         <td><?= htmlspecialchars($usuarios['apellidos']) ?></td>
                         <td><?= htmlspecialchars($usuarios['edad']) ?></td>
                         <td><?= htmlspecialchars($usuarios['email']) ?></td>
-                        <td><?= htmlspecialchars($usuarios['num_pasaporte']) ?></td>
+                        <td><?= htmlspecialchars(isset($usuarios['num_pasaporte']) ? $usuarios['num_pasaporte'] : '—') ?></td>
                         <td><a href="edit_user.php?id_usuario=<?= $usuarios['id_usuario'] ?>" class="boton_modificar">Modificar</a></td>
                         <td>
                             <form action="delete_user.php" method="POST" style="display:inline;">
