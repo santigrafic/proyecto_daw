@@ -5,7 +5,7 @@ include 'database.php';
 // Inicializar variables
 $nombre = $apellidos = $edad = $email = '';
 $numero_pasaporte = $pais_expedicion = '';
-$email_error = '';
+$nombre_error = $apellido_error = $edad_error = $email_error = $pasaporte_error = '';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $nombre = $_POST["nombre_usuario"] ?? '';
@@ -15,11 +15,44 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $numero_pasaporte = $_POST["numero_pasaporte"] ?? '';
   $pais_expedicion = $_POST["pais_expedicion"] ?? '';
 
+  // Normalización
+  $email = strtolower(trim($email));
+  $nombre = ucwords(strtolower(trim($nombre)));
+  $apellidos = ucwords(strtolower(trim($apellidos)));
+
+  $errores = false;
+
+  // Validaciones backend
+  if (empty($nombre)) {
+    $nombre_error = "El nombre es obligatorio.";
+    $errores = true;
+  }
+
+  if (empty($apellidos)) {
+    $apellido_error = "El apellido es obligatorio.";
+    $errores = true;
+  }
+
+  if (empty($edad) || !is_numeric($edad) || (int)$edad < 18) {
+    $edad_error = "Debe tener al menos 18 años.";
+    $errores = true;
+  }
+
+  if (empty($email)) {
+    $email_error = "El correo electrónico es obligatorio.";
+    $errores = true;
+  }
+
   if ((!empty($numero_pasaporte) && empty($pais_expedicion)) ||
       (empty($numero_pasaporte) && !empty($pais_expedicion))) {
-    echo "<p style='color:red;'>Si vas a rellenar datos del pasaporte, completa ambos campos.</p>";
-  } else {
+    $pasaporte_error = "Si vas a rellenar datos del pasaporte, completa ambos campos.";
+    $errores = true;
+  }
+
+  if (!$errores) {
     try {
+      $pdo->beginTransaction();
+
       $stmt = $pdo->prepare("INSERT INTO usuarios (nombre, apellidos, edad, email) VALUES (?, ?, ?, ?)");
       $stmt->execute([$nombre, $apellidos, $edad, $email]);
 
@@ -29,21 +62,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->execute([$numero_pasaporte, $pais_expedicion, $idUsuario]);
       }
 
+      $pdo->commit();
       header("Location: usuarios.php");
       exit;
     } catch (PDOException $e) {
+      $pdo->rollBack(); // Deshace todo lo anterior
       $msg = $e->getMessage();
 
       if (str_contains($msg, 'pk_pasaporte')) {
-        echo "<p style='color:red;'>Ese número de pasaporte ya está registrado. Usa uno diferente.</p>";
+        $pasaporte_error = "Ese número de pasaporte ya está registrado.";
       } elseif (str_contains($msg, 'pasaporte_id_usuario_key')) {
-        echo "<p style='color:red;'>Este usuario ya tiene un pasaporte asignado.</p>";
+        $pasaporte_error = "Este usuario ya tiene un pasaporte asignado.";
       } elseif (str_contains($msg, 'uq_usuarios_email')) {
         $email_error = "Ese correo electrónico ya está en uso.";
       } else {
-        echo "<p style='color:red;'>Error inesperado: " . htmlspecialchars($msg) . "</p>";
+        $pasaporte_error = "Error inesperado: " . htmlspecialchars($msg);
       }
     }
+
   }
 }
 ?>
@@ -75,13 +111,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <h3>Crea un nuevo usuario</h3>
 
         <input type="text" name="nombre_usuario" value="<?= htmlspecialchars($nombre) ?>" placeholder="Nombre del usuario" required /><br><br>
-        <div id="nombre_usuarioError" style="color:red;"></div><br>
+        <div id="nombre_usuarioError" style="color:red;">
+          <?= $nombre_error ?>
+        </div><br>
 
         <input type="text" name="apellido_usuario" value="<?= htmlspecialchars($apellidos) ?>" placeholder="Apellidos del usuario" required /><br><br>
-        <div id="apellido_usuarioError" style="color:red;"></div><br>
+        <div id="apellido_usuarioError" style="color:red;">
+          <?= $apellido_error ?>
+        </div><br>
 
         <input type="text" name="edad" value="<?= htmlspecialchars($edad) ?>" placeholder="Edad del usuario" required /><br><br>
-        <div id="edad_usuarioError" style="color:red;"></div><br>
+        <div id="edad_usuarioError" style="color:red;">
+          <?= $edad_error ?>
+        </div><br>
 
         <input type="email" name="email" value="<?= htmlspecialchars($email) ?>" placeholder="Email del usuario" required /><br><br>
         <div id="email_usuarioError" style="color:red;">
@@ -92,7 +134,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <p>Datos del pasaporte (opcional)</p>
         <input type="text" name="numero_pasaporte" value="<?= htmlspecialchars($numero_pasaporte) ?>" placeholder="Número de pasaporte (opcional)" /><br><br>
         <input type="text" name="pais_expedicion" value="<?= htmlspecialchars($pais_expedicion) ?>" placeholder="País de expedición (opcional)" /><br><br>
-        <div id="pasaporteError" style="color:red;"></div><br>
+        <div id="pasaporteError" style="color:red;">
+          <?= $pasaporte_error ?>
+        </div><br>
 
         <button class="boton_formularios" type="submit">AÑADIR USUARIO</button>
       </form>
@@ -145,14 +189,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       const numero = document.querySelector('input[name="numero_pasaporte"]').value.trim();
       const pais = document.querySelector('input[name="pais_expedicion"]').value.trim();
       const errorDiv = document.getElementById('pasaporteError');
-      const submitButton = document.querySelector('button[type="submit"]');
 
       if ((numero && !pais) || (!numero && pais)) {
         errorDiv.textContent = "Si vas a rellenar datos del pasaporte, completa ambos campos.";
-        submitButton.disabled = true;
       } else {
         errorDiv.textContent = "";
-        submitButton.disabled = false;
       }
     }
 
