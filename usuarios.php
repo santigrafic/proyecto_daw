@@ -68,31 +68,7 @@
                             </form>
                         </td>
                     </tr>
-                    <?php endwhile; ?>
-                <!-- Example row -->
-                <tr>
-                    <td>num</td>
-                    <td>Miguel Angelesdecielocaido</td>
-                    <td>Creo</td>
-                    <td>15</td>
-                    <td>correo@correo.com</td>
-                    <td>No</td>
-                    <td><a href="" class="boton_modificar">Modificar</a></td>
-                    <td><a href="" class="boton_eliminar">Eliminar</a></td>
-                </tr>
-                   <tr>
-                    <td>num</td>
-                    <td>Parti</td>
-                    <td>Do</td>
-                    <td>45</td>
-                    <td>imaginatequeesun@correolarguisimo.com</td>
-                    <td>Sí</td>
-                    <td><a href="" class="boton_modificar">Modificar</a></td>
-                    <td><a href="" class="boton_eliminar">Eliminar</a></td>
-                </tr>
-                <!--<?php
-                /*php*/
-                ?>-->
+                    <?php endwhile; ?>                
                 </tbody>
             </table>
         </section>

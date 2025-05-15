@@ -84,14 +84,8 @@ $destino = $stmt->fetch(PDO::FETCH_ASSOC);
                     </tr>
                 </thead>
                 <tbody>
-                <!-- Example row -->
-                <tr>
-                    <td>num</td>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>15</td>
-                    <td>correo@correo.com</td>
-                </tr>
+                <!--This section will be generated dynamically with PHP -->
+                    
                 <!--<?php
                 /*php*/
                 ?>-->
