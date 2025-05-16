@@ -253,6 +253,22 @@ footer {
     color: #5B5F62;
     opacity: 0.5;
 }
+#destinos_form select {
+    width: 40%;
+    padding: 20px;
+    border: 0px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #5B5F62;
+    border-right: 15px solid transparent;
+}
+#destinos_form select:required:invalid {
+  color: #afafaf; /* gris como placeholder */
+}
+#destino_form select option {
+  color: #000;
+}
+
 .boton_formularios {
     border: 1px solid #F66F4D;
     border-radius: 30px;

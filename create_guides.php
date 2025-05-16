@@ -1,22 +1,20 @@
 <?php include 'database.php';
 
+
+
 // Inicializar variables
-$nombre = $apellidos = $edad = $email = '';
-$numero_pasaporte = $pais_expedicion = '';
-$nombre_error = $apellido_error = $edad_error = $email_error = $pasaporte_error = '';
+$nombre = $apellidos = $especialidad_guia = $destino_asignado = '';
+$nombre_error = $apellidos_error = $especialidad_guia_error = $destino_asignado_error = '';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $nombre = $_POST["nombre_guia"] ?? '';
-  $apellido = $_POST["apellido_guia"] ?? '';
+  $apellidos = $_POST["apellidos_guia"] ?? '';
   $especialidad_guia = $_POST["especialidad_guia"] ?? '';
-  $email = $_POST["email"] ?? '';
-  $numero_pasaporte = $_POST["numero_pasaporte"] ?? '';
-  $pais_expedicion = $_POST["pais_expedicion"] ?? '';
+  $destino_asignado = $_POST["destino_asignado"] ?? '';
 
   // Normalización
-  $email = strtolower(trim($email));
-  $nombre = ucwords(strtolower(trim($nombre)));
-  $apellidos = ucwords(strtolower(trim($apellidos)));
+  $nombre = htmlspecialchars(ucwords(strtolower(trim($nombre))));
+  $apellidos = htmlspecialchars(ucwords(strtolower(trim($apellidos))));
 
   $errores = false;
 
@@ -27,23 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   }
 
   if (empty($apellidos)) {
-    $apellido_error = "El apellido es obligatorio.";
-    $errores = true;
-  }
-
-  if (empty($edad) || !is_numeric($edad) || (int)$edad < 18) {
-    $edad_error = "Debe tener al menos 18 años.";
-    $errores = true;
-  }
-
-  if (empty($email)) {
-    $email_error = "El correo electrónico es obligatorio.";
-    $errores = true;
-  }
-
-  if ((!empty($numero_pasaporte) && empty($pais_expedicion)) ||
-      (empty($numero_pasaporte) && !empty($pais_expedicion))) {
-    $pasaporte_error = "Si vas a rellenar datos del pasaporte, completa ambos campos.";
+    $apellidos_error = "Los apellidos son obligatorios.";
     $errores = true;
   }
 
@@ -51,31 +33,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     try {
       $pdo->beginTransaction();
 
-      $stmt = $pdo->prepare("INSERT INTO usuarios (nombre, apellidos, edad, email) VALUES (?, ?, ?, ?)");
-      $stmt->execute([$nombre, $apellidos, $edad, $email]);
-
-      if (!empty($numero_pasaporte) && !empty($pais_expedicion)) {
-        $idUsuario = $pdo->lastInsertId();
-        $stmt = $pdo->prepare("INSERT INTO pasaporte (numero, pais_expedicion, id_usuario) VALUES (?, ?, ?)");
-        $stmt->execute([$numero_pasaporte, $pais_expedicion, $idUsuario]);
-      }
+      $stmt = $pdo->prepare("INSERT INTO guias (nombre, apellidos, especialidad, id_destino) VALUES (?, ?, ?, ?)");
+      $stmt->execute([$nombre, $apellidos, $especialidad_guia, $destino_asignado]);      
 
       $pdo->commit();
-      header("Location: usuarios.php");
+      header("Location: guias.php");
       exit;
     } catch (PDOException $e) {
       $pdo->rollBack(); // Deshace todo lo anterior
       $msg = $e->getMessage();
-
-      if (str_contains($msg, 'pk_pasaporte')) {
-        $pasaporte_error = "Ese número de pasaporte ya está registrado.";
-      } elseif (str_contains($msg, 'pasaporte_id_usuario_key')) {
-        $pasaporte_error = "Este usuario ya tiene un pasaporte asignado.";
-      } elseif (str_contains($msg, 'uq_usuarios_email')) {
-        $email_error = "Ese correo electrónico ya está en uso.";
-      } else {
-        $pasaporte_error = "Error inesperado: " . htmlspecialchars($msg);
-      }
     }
 
   }
@@ -128,23 +94,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
           <p>Introduce el nombre y apellido, la especialidad y su ciudad asignada</p>
           <input type="text" name="nombre_guia" placeholder="Introduce aquí el nombre del guía" required/>
           <br><br><div id="nombre_guiaError"></div><br>
-          <input type="text" name="apellido_guia" placeholder="Introduce aquí el apellido del guía" required/>
-          <br><br><div id="apellido_guiaError"></div><br>
-          <label for="especialidad">Especialidad</label>
-            <select name="especialidad_guia" id="especialidad">
-              <option value="geografía">Geografía</option>
-              <option value="historia">Historia</option>
-              <option value="gastronomia">Gastronomía</option>
-              <option value="entretenimiento">Entretenimiento</option>
-              <option value="musica">Música</option>
+          <input type="text" name="apellidos_guia" placeholder="Introduce aquí el apellido del guía" required/>
+          <br><br><div id="apellidos_guiaError"></div><br>
+            <select name="especialidad_guia" id="especialidad" required>
+              <option disabled selected hidden value="">Introduce aquí la especialidad del guia</option>
+              <option value="Geografía">Geografía</option>
+              <option value="Historia">Historia</option>
+              <option value="Arquitectura">Arquitectura</option>
+              <option value="Comida">Gastronomia</option>
             </select>
           <br><br><div id="especialidad_guiaError"></div><br>
-          <input type="text" name="pais_asignado" placeholder="Introduce aquí el destino asignado del guía" required/>
-          <br><br><div id="paisAsignado_guiaError"></div><br>
+          <input type="text" name="destino_asignado" placeholder="Introduce aquí el destino asignado del guía" required/>
+          <br><br><div id="destinoAsignado_guiaError"></div><br>
           <button class="boton_formularios" type="submit">AÑADIR GUÍA</button>
         </form>
         <div style="clear: both"></div>
       </section>
+      <?php if (!empty($msg)): ?>
+  <div class="error mensaje-error">
+    <strong>Error:</strong> <?= htmlspecialchars($msg) ?>
+  </div>
+<?php endif; ?>
     </div>
     <footer>
       <img src="img/logo.png" />
@@ -167,13 +137,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <script>
       function validateForm() {
         const nombre_guiaInput = document.querySelector('input[name="nombre_guia"]');
-        const nombre_guiaError = document.getElementById('nombre_guíaError');
-        const apellido_guiaInput = document.querySelector('input[name="apellido_guia"]');
-        const apellido_guiaError = document.getElementById('apellido_guiaError');
-        const especialidad_guiaInput = document.querySelector('input[name="especialidad_guia"]');
+        const nombre_guiaError = document.getElementById('nombre_guiaError');
+        const apellidos_guiaInput = document.querySelector('input[name="apellidos_guia"]');
+        const apellidos_guiaError = document.getElementById('apellidos_guiaError');
+        const especialidad_guiaInput = document.querySelector('select[name="especialidad_guia"]');
         const especialidad_guiaError = document.getElementById('especialidad_guiaError');
-        const paisAsignado_guiaInput = document.querySelector('input[name="pais_asignado"]');
-        const paisAsignado_guiaError = document.getElementById('paisAsignado_guiaError');
+        const destinoAsignado_guiaInput = document.querySelector('input[name="destino_asignado"]');
+        const destinoAsignado_guiaError = document.getElementById('destinoAsignado_guiaError');
 
         let isValid = true;
 
@@ -186,30 +156,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
           isValid = false;
         }
 
-        apellido_guiaError.textContent = '';
-        if (apellido_guiaInput.value.trim() === '') {
-          apellido_guiaError.textContent = 'El apellido del guía es obligatorio.';
+        apellidos_guiaError.textContent = '';
+        if (apellidos_guiaInput.value.trim() === '') {
+          apellidos_guiaError.textContent = 'Los apellidos del guía son obligatorios.';
           isValid = false;
-        } else if (apellido_guiaInput.value.trim().length < 3) {
-          apellido_guiaError.textContent = 'El apellido del guía debe tener al menos 3 caracteres.';
+        } else if (apellidos_guiaInput.value.trim().length < 3) {
+          apellidos_guiaError.textContent = 'Los apellidos del guía deben tener al menos 3 caracteres.';
           isValid = false;
         }
 
         especialidad_guiaError.textContent = '';
         if (especialidad_guiaInput.value.trim() === '') {
-          especialidad_guiaError.textContent = 'El la especialidad del guía es obligatorio.';
-          isValid = false;
-        } else if (especialidad_guiaInput.value.trim().length < 3) {
-          especialidad_guiaError.textContent = 'Le especialidad del guía debe tener al menos 3 caracteres.';
+          especialidad_guiaError.textContent = 'La especialidad del guía es obligatoria.';
           isValid = false;
         }
 
-        paisAsignado_guiaError.textContent = '';
-        if (paisAsignado_guiaInput.value.trim() === '') {
-          paisAsignado_guiaError.textContent = 'El guía debe tener un destino asociado.';
-          isValid = false;
-        } else if (paisAsignado_guiaInput.value.trim().length < 3) {
-          paisAsignado_guiaError.textContent = 'El destino asociado al guía debe tener al menos 3 caracteres.';
+        destinoAsignado_guiaError.textContent = '';
+        if (destinoAsignado_guiaInput.value.trim() === '') {
+          destinoAsignado_guiaError.textContent = 'El guía debe tener un destino asociado.';
           isValid = false;
         }
 
