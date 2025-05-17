@@ -104,7 +104,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
               <option value="Comida">Gastronomia</option>
             </select>
           <br><br><div id="especialidad_guiaError"></div><br>
-          <input type="text" name="destino_asignado" placeholder="Introduce aquí el destino asignado del guía" required/>
+          <select name="destino_asignado" id="destino" required>
+            <?php
+                $stmt = $pdo->query("SELECT * FROM destino ORDER BY id_destino ASC");
+                while ($destino = $stmt->fetch(PDO::FETCH_ASSOC)):
+            ?>
+            <option disabled selected hidden value="">Introduce aquí el destino asignado del guia</option>
+            <option value = "<?= htmlspecialchars($destino['id_destino']) ?>"><?= htmlspecialchars($destino['ciudad']) ?></option>
+            <?php endwhile; ?>
+          </select>
           <br><br><div id="destinoAsignado_guiaError"></div><br>
           <button class="boton_formularios" type="submit">AÑADIR GUÍA</button>
         </form>
