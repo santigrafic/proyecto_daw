@@ -18,10 +18,10 @@
                 <img id="logo" src="img/logo.png" title="Logo" alt="Website logo" />
                 <ul>
                     <li><a href="index.php">Inicio</a></li>
-                    <li><a href="">Sobre nosotros</a></li>
+                    <!-- <li><a href="">Sobre nosotros</a></li> -->
                     <li><a href="destinations.php">Destinos</a></li>
-                    <li><a href="usuarios.php">Usuarios</a></li>
-                    <li><a href="guias.php">Guías</a></li>
+                    <li><a href="users.php">Usuarios</a></li>
+                    <li><a href="guides.php">Guías</a></li>
                 </ul>
             </nav>
             <a href="create_destinations.php" id="boton_book_now">Crear Nuevo</a>
@@ -50,7 +50,7 @@
                         <td><?= htmlspecialchars($destino['ciudad']) ?></td>
                         <td><?= htmlspecialchars($destino['pais']) ?></td>
                         <td><?= htmlspecialchars($destino['requiere_pasaporte'] ? 'Sí' : 'No'); ?></td>
-                        <td><a href="destino_tablas.php?id_destino=<?= $destino['id_destino'] ?>" class="boton_view_details">Ver Detalles</a></td>
+                        <td><a href="destination_tables.php?id_destino=<?= $destino['id_destino'] ?>" class="boton_view_details">Ver Detalles</a></td>
                     </tr>
                     <?php endwhile; ?>
                 </tbody>

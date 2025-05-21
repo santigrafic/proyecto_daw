@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_usuario = $_POST['id_usuario'];
     $stmt = $pdo->prepare("DELETE FROM usuarios WHERE id_usuario = ?");
     $stmt->execute([$id_usuario]);
-    header("Location: usuarios.php");
+    header("Location: users.php");
     exit;
 }
 ?>

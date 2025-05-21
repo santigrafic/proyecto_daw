@@ -18,23 +18,42 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
   if (!empty($id_usuario)) {
     try {
-      // Comprobación previa (opcional pero recomendable)
+      // Comprobación previa
       $stmt = $pdo->prepare("SELECT COUNT(*) FROM usuario_elige_destino WHERE id_usuario = ? AND id_destino = ?");
       $stmt->execute([$id_usuario, $id_destino]);
       $yaRegistrado = $stmt->fetchColumn();
 
       if ($yaRegistrado > 0) {
         $msg = "Ese usuario ya está registrado en este destino.";
-      } else {
-      $pdo->beginTransaction();
+        } else {
+            // Validar si requiere pasaporte
+            if ($destino['requiere_pasaporte']) {
+                $stmt = $pdo->prepare("SELECT COUNT(*) FROM pasaporte WHERE id_usuario = ?");
+                $stmt->execute([$id_usuario]);
+                $tienePasaporte = $stmt->fetchColumn();
 
-      $stmt = $pdo->prepare("INSERT INTO usuario_elige_destino (id_usuario, id_destino) VALUES (?, ?)");
-      $stmt->execute([$id_usuario, $id_destino]);      
+                if ($tienePasaporte == 0) {
+                    $msg = "Este destino requiere pasaporte. El usuario seleccionado no lo tiene.";
+                } else {
+                    // Tiene pasaporte, insertamos
+                    $pdo->beginTransaction();
+                    $stmt = $pdo->prepare("INSERT INTO usuario_elige_destino (id_usuario, id_destino) VALUES (?, ?)");
+                    $stmt->execute([$id_usuario, $id_destino]);
+                    $pdo->commit();
+                    header("Location: destination_tables.php?id_destino=" . $id_destino);
+                    exit;
+                }
+            } else {
+                // No requiere pasaporte, insertamos directamente
+                $pdo->beginTransaction();
+                $stmt = $pdo->prepare("INSERT INTO usuario_elige_destino (id_usuario, id_destino) VALUES (?, ?)");
+                $stmt->execute([$id_usuario, $id_destino]);
+                $pdo->commit();
+                header("Location: destination_tables.php?id_destino=" . $id_destino);
+                exit;
+            }
+        }
 
-      $pdo->commit();
-      header("Location: destino_tablas.php?id_destino=" . $id_destino);
-      exit;
-    }
     } catch (PDOException $e) {
       $pdo->rollBack(); // Deshace todo lo anterior
       $msg = $e->getMessage();
@@ -64,10 +83,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <img id="logo" src="img/logo.png" title="Logo" alt="Website logo" />
                 <ul>
                     <li><a href="index.php">Inicio</a></li>
-                    <li><a href="">Sobre nosotros</a></li>
+                    <!-- <li><a href="">Sobre nosotros</a></li> -->
                     <li><a href="destinations.php">Destinos</a></li>
-                    <li><a href="usuarios.php">Usuarios</a></li>
-                    <li><a href="guias.php">Guías</a></li>
+                    <li><a href="users.php">Usuarios</a></li>
+                    <li><a href="guides.php">Guías</a></li>
                 </ul>
             </nav>
             <div style="clear: both"></div>
@@ -104,7 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </tbody>
             </table>
 
-            <section id="destinos_form">
+            <section id="user_destination_form">
                 <form method="POST" onsubmit="return validateForm()" novalidate>
                     <h3>Registrar usuario en este destino</h3>
                     <select name="registrar_usuario" id="registro" required>
@@ -116,6 +135,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <option value = "<?= htmlspecialchars($usuario['id_usuario']) ?>"><?= htmlspecialchars($usuario['nombre'] . ' ' . $usuario['apellidos']) ?></option>
                         <?php endwhile; ?>
                     </select>
+                    <?php if (!empty($msg)): ?>
+                        <div style="color: red; margin-bottom: 1em;">
+                            <br><br><?= htmlspecialchars($msg) ?>
+                        </div>
+                    <?php endif; ?>
                     <br><br>
                     <button class="boton_formularios" type="submit">REGISTRAR</button>
                 </form>

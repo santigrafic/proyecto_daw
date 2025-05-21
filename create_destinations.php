@@ -68,16 +68,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <img id="logo" src="img/logo.png" title="Logo" alt="Logo de la web" />
           <ul>
             <li><a href="index.php">Inicio</a></li>
-            <li><a href="">Sobre nosotros</a></li>
+            <!-- <li><a href="">Sobre nosotros</a></li> -->
             <li><a href="destinations.php">Destinos</a></li>
-            <li><a href="usuarios.php">Usuarios</a></li>
-            <li><a href="guias.php">Guías</a></li>
+            <li><a href="users.php">Usuarios</a></li>
+            <li><a href="guides.php">Guías</a></li>
           </ul>
         </nav>
         <div style="clear: both"></div>
       </header>
       
-      <section id="destinos_form">
+      <section id="destinations_form">
       <form method="POST" onsubmit="return validateForm()" novalidate>
           <h3>Crea un nuevo destino</h3>
           <p>Introduce la ciudad, el pais al que pertenece y si requiere pasaporte.</p>

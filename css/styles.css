@@ -218,88 +218,8 @@ footer {
     color: #F66F4D;
     font-size: 14px;
 }
-#destinos_form {
-    text-align: center;
-    background-image: url(../img/bg-newsletter.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    border-radius: 30px;
-    padding: 40px 40px 80px 40px;
-    box-sizing: border-box;
-    margin-bottom: 50px;
-}
-#destinos_form h3 {
-    color: #2D3134;
-    font-size: 40px;
-    margin-bottom: 20px;
-}
-#destinos_form p {
-    width: 35%;
-    margin: 0 auto;
-    color: #5B5F62;
-    margin-bottom: 20px;
-}
-#destinos_form input {
-    width: 40%;
-    padding: 20px;
-    border: 0px;
-    border-radius: 10px;
-    box-sizing: border-box;
-    color: #5B5F62;
-}
-#destinos_form input::placeholder {
-    color: #5B5F62;
-    opacity: 0.5;
-}
-#destinos_form select {
-    width: 40%;
-    padding: 20px;
-    border: 0px;
-    border-radius: 10px;
-    box-sizing: border-box;
-    color: #5B5F62;
-    border-right: 15px solid transparent;
-}
-#destinos_form select:required:invalid {
-  color: #afafaf; /* gris como placeholder */
-}
-#destino_form select option {
-  color: #000;
-}
 
-.boton_formularios {
-    border: 1px solid #F66F4D;
-    border-radius: 30px;
-    width: 150px;
-    height: 40px;
-    color:#F66F4D;
-    background-color: rgba(0, 0, 0, 0);
-    box-sizing: border-box;
-    text-align: center;
-    text-decoration: none;
-    padding-top: 2px;
-}
-.boton_formularios:hover {
-    color:#FAF8ED;
-    background-color: #F66F4D;
-}
-#ciudad_destinoError {
-    color: red;
-    font-weight: bold;
-}
-#pais_destinoError {
-    color: red;
-    font-weight: bold;
-}
-.input_type_radio {
-    width: 100px;
-    text-align: left;
-    margin: 0 auto;
-}
-
-/* Destinations*/
+/* Destinations */
 #destinations h1 {
     font-size: 4.5rem;
     font-family: "sen", sans-serif;
@@ -436,7 +356,7 @@ tr .boton_view_details:active{
 #passport {
     font-size: 1.25rem;
 }
-/*Listado de usuarios*/
+/* Listado de usuario s*/
 #usuarios h1 {
     font-size: 4.5rem;
     font-family: "sen", sans-serif;
@@ -503,4 +423,296 @@ tr .boton_eliminar:active {
     color: #F66F4D;
     background-color: #FAF8ED;
     border-color:#FAF8ED;
+}
+
+/* Formularios */
+/* DESTINATIONS */
+#destinations_form {
+    text-align: center;
+    background-image: url(../img/bg-newsletter.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    border-radius: 30px;
+    padding: 40px 40px 80px 40px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+#destinations_form h3 {
+    color: #2D3134;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+#destinations_form p {
+    width: 35%;
+    margin: 0 auto;
+    color: #5B5F62;
+    margin-bottom: 20px;
+}
+#destinations_form input {
+    width: 40%;
+    padding: 20px;
+    border: 0px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #5B5F62;
+}
+#destinations_form input::placeholder {
+    color: #5B5F62;
+    opacity: 0.5;
+}
+#destinations_form select {
+    width: 40%;
+    padding: 20px;
+    border: 0px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #5B5F62;
+    border-right: 15px solid transparent;
+}
+#destinations_form select:required:invalid {
+  color: #afafaf; /* gris como placeholder */
+}
+#destinations_form select option {
+  color: #000;
+}
+
+/* USERS */
+#users_form {
+    text-align: center;
+    background-image: url(../img/bg-newsletter.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    border-radius: 30px;
+    padding: 40px 40px 80px 40px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+#users_form h3 {
+    color: #2D3134;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+#users_form p {
+    width: 35%;
+    margin: 0 auto;
+    color: #5B5F62;
+    margin-bottom: 20px;
+}
+#users_form input {
+    width: 40%;
+    padding: 20px;
+    border: 0px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #5B5F62;
+}
+#users_form input::placeholder {
+    color: #5B5F62;
+    opacity: 0.5;
+}
+#users_form select {
+    width: 40%;
+    padding: 20px;
+    border: 0px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #5B5F62;
+    border-right: 15px solid transparent;
+}
+#users_form select:required:invalid {
+  color: #afafaf; /* gris como placeholder */
+}
+#users_form select option {
+  color: #000;
+}
+
+/* GUIDES */
+#guides_form {
+    text-align: center;
+    background-image: url(../img/bg-newsletter.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    border-radius: 30px;
+    padding: 40px 40px 80px 40px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+#guides_form h3 {
+    color: #2D3134;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+#guides_form p {
+    width: 35%;
+    margin: 0 auto;
+    color: #5B5F62;
+    margin-bottom: 20px;
+}
+#guides_form input {
+    width: 40%;
+    padding: 20px;
+    border: 0px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #5B5F62;
+}
+#guides_form input::placeholder {
+    color: #5B5F62;
+    opacity: 0.5;
+}
+#guides_form select {
+    width: 40%;
+    padding: 20px;
+    border: 0px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #5B5F62;
+    border-right: 15px solid transparent;
+}
+#guides_form select:required:invalid {
+  color: #afafaf; /* gris como placeholder */
+}
+#guides_form select option {
+  color: #000;
+}
+
+/* USER_DESTINATION_FORM */
+#user_destination_form {
+    text-align: center;
+    background-image: url(../img/bg-newsletter.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    border-radius: 30px;
+    padding: 40px 40px 80px 40px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+#user_destination_form h3 {
+    color: #2D3134;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+#user_destination_form p {
+    width: 35%;
+    margin: 0 auto;
+    color: #5B5F62;
+    margin-bottom: 20px;
+}
+#user_destination_form input {
+    width: 40%;
+    padding: 20px;
+    border: 0px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #5B5F62;
+}
+#user_destination_form input::placeholder {
+    color: #5B5F62;
+    opacity: 0.5;
+}
+#user_destination_form select {
+    width: 40%;
+    padding: 20px;
+    border: 0px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #5B5F62;
+    border-right: 15px solid transparent;
+}
+#user_destination_form select:required:invalid {
+  color: #afafaf; /* gris como placeholder */
+}
+#user_destination_form select option {
+  color: #000;
+}
+
+/* EDIT_USER */
+#edit_user_form {
+    text-align: center;
+    background-image: url(../img/bg-newsletter.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    border-radius: 30px;
+    padding: 40px 40px 80px 40px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+#edit_user_form h3 {
+    color: #2D3134;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+#edit_user_form p {
+    width: 35%;
+    margin: 0 auto;
+    color: #5B5F62;
+    margin-bottom: 20px;
+}
+#edit_user_form input {
+    width: 40%;
+    padding: 20px;
+    border: 0px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #5B5F62;
+}
+#edit_user_form input::placeholder {
+    color: #5B5F62;
+    opacity: 0.5;
+}
+#edit_user_form select {
+    width: 40%;
+    padding: 20px;
+    border: 0px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #5B5F62;
+    border-right: 15px solid transparent;
+}
+#edit_user_form select:required:invalid {
+  color: #afafaf; /* gris como placeholder */
+}
+#edit_user_form select option {
+  color: #000;
+}
+
+/* FORMULARIOS - OTROS */
+.boton_formularios {
+    border: 1px solid #F66F4D;
+    border-radius: 30px;
+    width: 150px;
+    height: 40px;
+    color:#F66F4D;
+    background-color: rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    padding-top: 2px;
+}
+.boton_formularios:hover {
+    color:#FAF8ED;
+    background-color: #F66F4D;
+}
+#ciudad_destinoError {
+    color: red;
+    font-weight: bold;
+}
+#pais_destinoError {
+    color: red;
+    font-weight: bold;
+}
+.input_type_radio {
+    width: 100px;
+    text-align: left;
+    margin: 0 auto;
 }
