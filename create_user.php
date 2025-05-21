@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       }
 
       $pdo->commit();
-      header("Location: usuarios.php");
+      header("Location: users.php");
       exit;
     } catch (PDOException $e) {
       $pdo->rollBack(); // Deshace todo lo anterior
