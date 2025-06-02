@@ -41,6 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   if (empty($email)) {
     $email_error = "El correo electrónico es obligatorio.";
     $errores = true;
+  }elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+  $email_error = "El formato del correo no es válido.";
+  $errores = true;
   }
 
   if ((!empty($numero_pasaporte) && empty($pais_expedicion)) ||
@@ -108,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <section id="users_form">
       <form method="POST" onsubmit="return validateForm()" novalidate>
-        <h3>Crea un nuevo usuario</h3>
+        <h3>Crear un nuevo usuario</h3>
 
         <input type="text" name="nombre_usuario" value="<?= htmlspecialchars($nombre) ?>" placeholder="Introduce aquí el nombre del usuario" required /><br><br>
         <div id="nombre_usuarioError" class="form_error">

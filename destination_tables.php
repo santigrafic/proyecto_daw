@@ -95,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <section id="destinations">
             <h1><?php echo htmlspecialchars($destino['ciudad']) ?></h1>
             <h2 class="destination"><?php echo htmlspecialchars($destino['pais']) ?></h2>
-            <p id="passport">¿Requiere Pasaporte? <?php echo htmlspecialchars($destino['requiere_pasaporte'] ? 'Sí' : 'No'); ?></p>
+            <p id="passport"><?php echo htmlspecialchars($destino['requiere_pasaporte'] ? 'Necesita pasaporte' : 'No necesita pasaporte'); ?></p>
             <h3 class="destination">Guías Asignados</h3>
             <table>
                 <thead>

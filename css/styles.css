@@ -720,3 +720,9 @@ tr .boton_eliminar:active {
     color: red;
     font-weight: bold;
 }
+.form_success {
+    color: green;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
