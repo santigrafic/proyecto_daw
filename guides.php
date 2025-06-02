@@ -28,7 +28,7 @@
             <div style="clear: both"></div>
         </header>
         <section id="guias">
-            <h1>Listado de Guías</h1>
+            <h1>Guías Registrados</h1>
             <table>
                 <thead>
                     <tr>

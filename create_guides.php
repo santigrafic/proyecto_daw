@@ -29,6 +29,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $errores = true;
   }
 
+  if (empty($especialidad_guia)) {
+    $especialidad_guia_error = "La especialidad es obligatoria.";
+    $errores = true;
+  }
+
+  if (empty($destino_asignado)) {
+    $destino_asignado_error = "Debes seleccionar un destino.";
+    $errores = true;
+  }
+
   if (!$errores) {
     try {
       $pdo->beginTransaction();
@@ -92,28 +102,44 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <form method="POST" onsubmit="return validateForm()" novalidate>
           <h3>Crea un nuevo guía</h3>
           <p>Introduce el nombre y apellido, la especialidad y su ciudad asignada</p>
-          <input type="text" name="nombre_guia" placeholder="Introduce aquí el nombre del guía" required/>
-          <br><br><div id="nombre_guiaError"></div><br>
-          <input type="text" name="apellidos_guia" placeholder="Introduce aquí el apellido del guía" required/>
-          <br><br><div id="apellidos_guiaError"></div><br>
+          <input type="text" name="nombre_guia" value="<?= htmlspecialchars($nombre) ?>" placeholder="Introduce aquí el nombre del guía" required />
+          <br><br>
+          <div id="nombre_guiaError" class = "form_error">
+            <?= $nombre_error ?>
+          </div><br>
+          <input type="text" name="apellidos_guia" value="<?= htmlspecialchars($apellidos) ?>" placeholder="Introduce aquí el apellido del guía" required/>
+          <br><br>
+          <div id="apellidos_guiaError" class = "form_error">
+            <?=$apellidos_error ?>
+          </div><br>
             <select name="especialidad_guia" id="especialidad" required>
-              <option disabled selected hidden value="">Introduce aquí la especialidad del guia</option>
-              <option value="Geografía">Geografía</option>
-              <option value="Historia">Historia</option>
-              <option value="Arquitectura">Arquitectura</option>
-              <option value="Comida">Gastronomia</option>
+              <option disabled value="" <?= $especialidad_guia === '' ? 'selected' : '' ?>>Introduce aquí la especialidad del guía</option>
+              <option value="Geografía" <?= $especialidad_guia === 'Geografía' ? 'selected' : '' ?>>Geografía</option>
+              <option value="Historia" <?= $especialidad_guia === 'Historia' ? 'selected' : '' ?>>Historia</option>
+              <option value="Arquitectura" <?= $especialidad_guia === 'Arquitectura' ? 'selected' : '' ?>>Arquitectura</option>
+              <option value="Comida" <?= $especialidad_guia === 'Comida' ? 'selected' : '' ?>>Gastronomía</option>
             </select>
-          <br><br><div id="especialidad_guiaError"></div><br>
+
+          <br><br>
+          <div id="especialidad_guiaError" class = "form_error">
+            <?= $especialidad_guia_error ?>
+          </div><br>
           <select name="destino_asignado" id="destino" required>
+            <option disabled value="" <?= $destino_asignado === '' ? 'selected' : '' ?>>Introduce aquí el destino asignado del guía</option>
             <?php
                 $stmt = $pdo->query("SELECT * FROM destino ORDER BY id_destino ASC");
                 while ($destino = $stmt->fetch(PDO::FETCH_ASSOC)):
+                $selected = ($destino_asignado == $destino['id_destino']) ? 'selected' : '';
             ?>
-            <option disabled selected hidden value="">Introduce aquí el destino asignado del guia</option>
-            <option value = "<?= htmlspecialchars($destino['id_destino']) ?>"><?= htmlspecialchars($destino['ciudad']) ?></option>
+              <option value="<?= htmlspecialchars($destino['id_destino']) ?>" <?= $selected ?>>
+                <?= htmlspecialchars($destino['ciudad']) ?>
+              </option>
             <?php endwhile; ?>
           </select>
-          <br><br><div id="destinoAsignado_guiaError"></div><br>
+          <br><br>
+          <div id="destinoAsignado_guiaError" class="form_error">
+            <?= $destino_asignado_error ?>
+          </div><br>
           <button class="boton_formularios" type="submit">AÑADIR GUÍA</button>
         </form>
         <div style="clear: both"></div>
@@ -150,7 +176,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         const apellidos_guiaError = document.getElementById('apellidos_guiaError');
         const especialidad_guiaInput = document.querySelector('select[name="especialidad_guia"]');
         const especialidad_guiaError = document.getElementById('especialidad_guiaError');
-        const destinoAsignado_guiaInput = document.querySelector('input[name="destino_asignado"]');
+        const destinoAsignado_guiaInput = document.querySelector('select[name="destino_asignado"]');
         const destinoAsignado_guiaError = document.getElementById('destinoAsignado_guiaError');
 
         let isValid = true;

@@ -122,7 +122,40 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <?php endwhile; ?>
                 </tbody>
             </table>
-
+            <h3 class="destination">Usuarios Registrados</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Edad</th>
+                        <th>Correo electrónico</th>
+                        <th>Pasaporte</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        $stmt = $pdo->prepare("SELECT u.id_usuario, u.nombre, u.apellidos, u.edad, u.email, p.numero AS num_pasaporte
+                                            FROM usuarios u
+                                            JOIN usuario_elige_destino ued ON u.id_usuario = ued.id_usuario 
+                                            LEFT JOIN pasaporte p ON u.id_usuario = p.id_usuario
+                                            WHERE ued.id_destino = ?
+                                            ORDER BY u.id_usuario ASC");
+                        $stmt->execute([$id_destino]);
+                        while ($usuarios = $stmt->fetch(PDO::FETCH_ASSOC)):
+                    ?>
+                    <tr>
+                        <td><?= htmlspecialchars($usuarios['id_usuario']) ?></td>
+                        <td><?= htmlspecialchars($usuarios['nombre']) ?></td>
+                        <td><?= htmlspecialchars($usuarios['apellidos']) ?></td>
+                        <td><?= htmlspecialchars($usuarios['edad']) ?></td>
+                        <td><?= htmlspecialchars($usuarios['email']) ?></td>
+                        <td><?= htmlspecialchars(isset($usuarios['num_pasaporte']) ? $usuarios['num_pasaporte'] : '—') ?></td>
+                    </tr>
+                    <?php endwhile; ?> 
+                </tbody>
+            </table>
             <section id="user_destination_form">
                 <form method="POST" onsubmit="return validateForm()" novalidate>
                     <h3>Registrar usuario en este destino</h3>
@@ -145,41 +178,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </form>
                 <div style="clear: both"></div>
             </section>
-            <h3 class="destination">Usuarios Registrados</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Edad</th>
-                        <th>Correo electrónico</th>
-                        <th>Pasaporte</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <!--This section will be generated dynamically with PHP -->
-                    <?php
-                        $stmt = $pdo->prepare("SELECT u.id_usuario, u.nombre, u.apellidos, u.edad, u.email, p.numero AS num_pasaporte
-                                            FROM usuarios u
-                                            JOIN usuario_elige_destino ued ON u.id_usuario = ued.id_usuario 
-                                            LEFT JOIN pasaporte p ON u.id_usuario = p.id_usuario
-                                            WHERE ued.id_destino = ?
-                                            ORDER BY u.id_usuario ASC");
-                        $stmt->execute([$id_destino]);
-                        while ($usuarios = $stmt->fetch(PDO::FETCH_ASSOC)):
-                    ?>
-                    <tr>
-                        <td><?= htmlspecialchars($usuarios['id_usuario']) ?></td>
-                        <td><?= htmlspecialchars($usuarios['nombre']) ?></td>
-                        <td><?= htmlspecialchars($usuarios['apellidos']) ?></td>
-                        <td><?= htmlspecialchars($usuarios['edad']) ?></td>
-                        <td><?= htmlspecialchars($usuarios['email']) ?></td>
-                        <td><?= htmlspecialchars(isset($usuarios['num_pasaporte']) ? $usuarios['num_pasaporte'] : '—') ?></td>
-                    </tr>
-                    <?php endwhile; ?> 
-                </tbody>
-            </table>
         </section>
     </div>
 

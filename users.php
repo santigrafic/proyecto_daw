@@ -30,7 +30,7 @@
         </header>
 
         <section id="usuarios">
-            <h1>Listado de Usuarios Registrados</h1>
+            <h1>Usuarios Registrados</h1>
             <table>
                 <thead>
                     <tr>

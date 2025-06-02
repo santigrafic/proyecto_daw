@@ -110,31 +110,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <form method="POST" onsubmit="return validateForm()" novalidate>
         <h3>Crea un nuevo usuario</h3>
 
-        <input type="text" name="nombre_usuario" value="<?= htmlspecialchars($nombre) ?>" placeholder="Nombre del usuario" required /><br><br>
-        <div id="nombre_usuarioError" style="color:red;">
+        <input type="text" name="nombre_usuario" value="<?= htmlspecialchars($nombre) ?>" placeholder="Introduce aquí el nombre del usuario" required /><br><br>
+        <div id="nombre_usuarioError" class="form_error">
           <?= $nombre_error ?>
         </div><br>
 
-        <input type="text" name="apellido_usuario" value="<?= htmlspecialchars($apellidos) ?>" placeholder="Apellidos del usuario" required /><br><br>
-        <div id="apellido_usuarioError" style="color:red;">
+        <input type="text" name="apellido_usuario" value="<?= htmlspecialchars($apellidos) ?>" placeholder="Introduce aquí los apellidos del usuario" required /><br><br>
+        <div id="apellido_usuarioError" class="form_error">
           <?= $apellido_error ?>
         </div><br>
 
-        <input type="text" name="edad" value="<?= htmlspecialchars($edad) ?>" placeholder="Edad del usuario" required /><br><br>
-        <div id="edad_usuarioError" style="color:red;">
+        <input type="text" name="edad" value="<?= htmlspecialchars($edad) ?>" placeholder="Introduce aquí la edad del usuario" required /><br><br>
+        <div id="edad_usuarioError" class="form_error">
           <?= $edad_error ?>
         </div><br>
 
-        <input type="email" name="email" value="<?= htmlspecialchars($email) ?>" placeholder="Email del usuario" required /><br><br>
-        <div id="email_usuarioError" style="color:red;">
+        <input type="email" name="email" value="<?= htmlspecialchars($email) ?>" placeholder="Introduce aquí el email del usuario" required /><br><br>
+        <div id="email_usuarioError" class="form_error">
           <?= $email_error ?>
         </div><br>
 
         <hr>
-        <p>Datos del pasaporte (opcional)</p>
-        <input type="text" name="numero_pasaporte" value="<?= htmlspecialchars($numero_pasaporte) ?>" placeholder="Número de pasaporte (opcional)" /><br><br>
-        <input type="text" name="pais_expedicion" value="<?= htmlspecialchars($pais_expedicion) ?>" placeholder="País de expedición (opcional)" /><br><br>
-        <div id="pasaporteError" style="color:red;">
+        <h3>Datos del pasaporte (opcional)</h3>
+        <input type="text" name="numero_pasaporte" value="<?= htmlspecialchars($numero_pasaporte) ?>" placeholder="Introduce aquí el número de pasaporte (opcional)" /><br><br>
+        <input type="text" name="pais_expedicion" value="<?= htmlspecialchars($pais_expedicion) ?>" placeholder="Introduce aquí el país de expedición (opcional)" /><br><br>
+        <div id="pasaporteError" class="form_error">
           <?= $pasaporte_error ?>
         </div><br>
 
