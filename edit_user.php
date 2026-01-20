@@ -71,8 +71,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   }
 
   if (empty($email)) {
-    $email_error = "El email es obligatorio.";
+    $email_error = "El correo electrónico es obligatorio.";
     $errores = true;
+  }elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+  $email_error = "El formato del correo no es válido.";
+  $errores = true;
   }
 
   if ((!empty($numero_pasaporte) && empty($pais_expedicion)) ||

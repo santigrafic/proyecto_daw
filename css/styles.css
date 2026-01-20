@@ -693,7 +693,7 @@ tr .boton_eliminar:active {
     width: 150px;
     height: 40px;
     color:#F66F4D;
-    background-color: rgba(0, 0, 0, 0);
+    background-color:#FAF8ED;
     box-sizing: border-box;
     text-align: center;
     text-decoration: none;
@@ -715,4 +715,8 @@ tr .boton_eliminar:active {
     width: 100px;
     text-align: left;
     margin: 0 auto;
+}
+.form_error{
+    color: red;
+    font-weight: bold;
 }
